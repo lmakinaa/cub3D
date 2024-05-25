@@ -6,11 +6,20 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:17:40 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/25 17:12:30 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/25 17:58:00 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "cub3d.h"
+
+//void	adjust_intersec(double ang, double *start_n, double *step_n)
+//{
+//	if (ang > 0 && ang < M_PI)
+//	{
+//		if 
+//		(*step_n) *= -1;
+//	}
+//}
 
 // first horizental intersec:
 /*
@@ -29,11 +38,10 @@ void	h_intersec(t_cub *cub)
 	double		start_y;
 	double		step_x;
 	double		step_y;
-	t_player	*p;
 
-	p = cub->p;
-	start_y = floor(p->y_pixel / TILE_SIZE) * TILE_SIZE;
-	start_x = p->x_pixel + (p->y_pixel - start_y / tan(cub->ray->ray_angle));
+	start_y = floor(cub->p->y_pixel / TILE_SIZE) * TILE_SIZE;
+	start_x = cub->p->x_pixel
+		+ (cub->p->y_pixel - start_y / tan(cub->ray->ray_angle));
 	step_y = TILE_SIZE;
 	step_x = step_y / tan(cub->ray->ray_angle);
 	
