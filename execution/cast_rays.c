@@ -6,44 +6,65 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:17:40 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/25 16:38:06 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/25 17:12:30 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "cub3d.h"
 
-	// first horizental intersec:
-	/*
-		y = floor(p_y / TILE_SIZE) * TILE_SIZE
-		x = p_x + (p_y - y / tan(angle))
-	*/
-	
-	// horizental intersec steps
-	/*
-		step_y = opposite = TILE_SIZE
-		step_x = opposite / tan(angle)
-	*/
-void	h_intersec(t_cub *cub, int first)
+// first horizental intersec:
+/*
+	y = floor(p_y / TILE_SIZE) * TILE_SIZE
+	x = p_x + (p_y - y / tan(angle))
+*/
+
+// horizental intersec steps
+/*
+	step_y = opposite = TILE_SIZE
+	step_x = opposite / tan(angle)
+*/
+void	h_intersec(t_cub *cub)
 {
-	if (first)
-	{
-		
-	}
+	double		start_x;
+	double		start_y;
+	double		step_x;
+	double		step_y;
+	t_player	*p;
+
+	p = cub->p;
+	start_y = floor(p->y_pixel / TILE_SIZE) * TILE_SIZE;
+	start_x = p->x_pixel + (p->y_pixel - start_y / tan(cub->ray->ray_angle));
+	step_y = TILE_SIZE;
+	step_x = step_y / tan(cub->ray->ray_angle);
+	
+	
 }
 
+// first horizental intersec:
+/*
+	x = floor(p_x / TILE_SIZE) * TILE_SIZE
+	y = p_y - ((x - p_x) * tan(angle))
+*/
+
+// horizental intersec steps
+/*
+	step_x = adjacent = TILE_SIZE
+	step_y = opposite * tan(angle)
+*/
 void	v_intersec(t_cub *cub, int first)
 {
-	// first horizental intersec:
-	/*
-		x = ????(p_x / TILE_SIZE) * TILE_SIZE
-		y = p_y - ((x - p_x) * tan(angle))
-	*/
+	double		start_x;
+	double		start_y;
+	double		step_x;
+	double		step_y;
+	t_player	*p;
+
+	p = cub->p;
+	start_x = floor(p->x_pixel / TILE_SIZE) * TILE_SIZE;
+	start_y = p->y_pixel - ((start_x - p->x_pixel) * tan(cub->ray->ray_angle));
+	step_x = TILE_SIZE;
+	step_y = step_x * tan(cub->ray->ray_angle);
 	
-	// horizental intersec steps
-	/*
-		step_x = adjacent = TILE_SIZE
-		step_y = opposite * tan(angle)
-	*/
 }
 
 void cast_rays(t_cub *cub, int x, int y)
