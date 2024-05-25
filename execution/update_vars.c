@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_vars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 01:23:44 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/24 02:06:45 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/25 16:45:33 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,10 @@ void	update_vars(t_cub *cub)
 	tmp_x = new_x / MINI_TILE_SIZE;
 	tmp_y = new_y / MINI_TILE_SIZE;
 	if (cub->data->map2d[tmp_y][tmp_x] != '1')
-		(1) && (cub->p->mini_x_pixel = new_x, cub->p->mini_y_pixel = new_y);
+	{
+		tmp_x = (new_x + MINI_TILE_SIZE / 2) / MINI_TILE_SIZE;
+		tmp_y = (new_y + MINI_TILE_SIZE / 2) / MINI_TILE_SIZE;
+		if (cub->data->map2d[tmp_y][tmp_x] != '1')
+			(1) && (cub->p->mini_x_pixel = new_x, cub->p->mini_y_pixel = new_y);
+	}
 }
