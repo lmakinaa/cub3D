@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:17:40 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/25 23:09:14 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/26 15:26:47 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	is_wall(t_cub *cub, double start_y, double start_x)
 	step_y = opposite = TILE_SIZE
 	step_x = opposite / tan(angle)
 */
-double	h_intersec_distance(t_cub *cub)
+double	h_intersec_distance(t_cub *cub, double ray_angle)
 {
 	double		start_x;
 	double		start_y;
@@ -88,9 +88,9 @@ double	h_intersec_distance(t_cub *cub)
 	start_y = floor(cub->p->y_pixel / TILE_SIZE) * TILE_SIZE;
 	adjust_intersec(cub->ray, 0, NULL, &start_y, 1);
 	start_x = cub->p->x_pixel
-		+ ((start_y - cub->p->y_pixel) / tan(cub->ray->ray_angle));
+		+ ((start_y - cub->p->y_pixel) / tan(ray_angle));
 	step_y = TILE_SIZE;
-	step_x = TILE_SIZE / tan(cub->ray->ray_angle);
+	step_x = TILE_SIZE / tan(ray_angle);
 	adjust_intersec(cub->ray, 1, &step_x, &step_y, 1);
 	while (start_x >= 0 && start_x <= S_W && start_y >= 0 && start_y <= S_H)
 	{
@@ -118,7 +118,7 @@ double	h_intersec_distance(t_cub *cub)
 	step_x = adjacent = TILE_SIZE
 	step_y = opposite * tan(angle)
 */
-double	v_interse_distance(t_cub *cub)
+double	v_interse_distance(t_cub *cub, double ray_angle)
 {
 	double		start_x;
 	double		start_y;
@@ -129,9 +129,9 @@ double	v_interse_distance(t_cub *cub)
 	start_x = floor(cub->p->x_pixel / TILE_SIZE) * TILE_SIZE;
 	adjust_intersec(cub->ray, 0, &start_x, NULL, 0);
 	start_y = cub->p->y_pixel
-		+ ((start_x - cub->p->x_pixel) * tan(cub->ray->ray_angle));
+		+ ((start_x - cub->p->x_pixel) * tan(ray_angle));
 	step_x = TILE_SIZE;
-	step_y = TILE_SIZE * tan(cub->ray->ray_angle);
+	step_y = TILE_SIZE * tan(ray_angle);
 	adjust_intersec(cub->ray, 1, &step_x, &step_y, 0);
 	while (start_x >= 0 && start_x <= S_W && start_y >= 0 && start_y <= S_H)
 	{
@@ -152,15 +152,15 @@ void cast_rays(t_cub *cub, int x, int y)
 {
 	int	col;
 
-	cub->ray->ray_angle = map_angle(cub->p->angle - (cub->p->fov_rd / 2));
+	cub->ray->ray_angle = cub->p->angle - (cub->p->fov_rd / 2);
 	get_angle_facing(cub->ray);
 	col = -1;
 	while (++col < N_RAYS)
 	{
 		double ray_x = 0;
         double ray_y = 0;
-		double	h_d = h_intersec_distance(cub);
-		double	v_d = v_interse_distance(cub);
+		double	h_d = h_intersec_distance(cub, map_angle(cub->ray->ray_angle));
+		double	v_d = v_interse_distance(cub, map_angle(cub->ray->ray_angle));
 		if (v_d <= h_d)
 		{
 			cub->ray->distance_to_wall = v_d;
@@ -178,8 +178,7 @@ void cast_rays(t_cub *cub, int x, int y)
 		ray_x,
 		ray_y,
 		get_rgba(0, 0, 255, 255));
-		cub->ray->ray_angle += cub->p->fov_rd / cub->ray->n_rays;
-		cub->ray->ray_angle = map_angle(cub->ray->ray_angle);
+		cub->ray->ray_angle += cub->p->fov_rd / S_W;
 		get_angle_facing(cub->ray);
 	}
 }
@@ -284,4 +283,30 @@ void cast_rays(t_cub *cub, int x, int y)
 //		v_y += y_step;
 //	}
 //	return (sqrt(pow(v_x - mlx->ply->plyr_x, 2) + pow(v_y - mlx->ply->plyr_y, 2))); // get the distance
+//}
+
+//void cast_rays(t_mlx *mlx) // cast the rays
+//{
+//	double h_inter;
+//	double v_inter;
+//	int  ray;
+
+//	ray = 0;
+//	mlx->ray->ray_ngl = mlx->ply->angle - (mlx->ply->fov_rd / 2); // the start angle
+//	while (ray < S_W) // loop for the rays
+//	{
+//		mlx->ray->flag = 0; // flag for the wall
+//		h_inter = get_h_inter(mlx, nor_angle(mlx->ray->ray_ngl)); // get the horizontal intersection
+//		v_inter = get_v_inter(mlx, nor_angle(mlx->ray->ray_ngl)); // get the vertical intersection
+//		if (v_inter <= h_inter) // check the distance
+//			mlx->ray->distance = v_inter; // get the distance
+//		else
+//		{
+//			mlx->ray->distance = h_inter; // get the distance
+//			mlx->ray->flag = 1; // flag for the wall
+//		}
+//		render_wall(mlx, ray); // render the wall
+//		ray++; // next ray
+//		mlx->ray->ray_ngl += (mlx->ply->fov_rd / S_W); // next angle
+//	}
 //}
