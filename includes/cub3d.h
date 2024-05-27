@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/25 20:05:24 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/27 18:20:19 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,6 @@ void 			draw_line(t_cub *cub, int beginX, int beginY, int endX, int endY, int co
 int 			get_rgba(int r, int g, int b, int a);
 void			update_vars(t_cub *cub);
 double			map_angle(double angle);
+void			render_wall(t_cub *mlx, int ray);
 
 #endif
