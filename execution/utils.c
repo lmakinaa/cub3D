@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:43:23 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/27 21:45:40 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/27 23:25:06 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	display_img(t_cub *mlx, int what_img)
 	if (what_img == MAIN)
 		(1) && (x = 0, y = 0, img = mlx->img, vr());
 	else if (what_img == MINIMAP)
-		(1) && (x = 0, y = S_H - MINIMAP_H, img = mlx->minimap_img, vr());
+		(1) && (x = 5, y = 5, img = mlx->minimap_img, vr());
 	mlx_image_to_window(mlx->mlx_p, img, x, y);
 }
 
