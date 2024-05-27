@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 01:23:44 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/27 21:21:37 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/27 21:22:32 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ void	update_vars(t_cub *cub)
 	step = PLAYER_SPEED;
 	if (cub->p->l_r == 1)
 	{
-		tmp_x = -1 * sin(cub->p->angle) * step;
+		tmp_x = sin(cub->p->angle) * step * -1;
 		tmp_y = cos(cub->p->angle) * step;
 	}
 	else if (cub->p->l_r == -1)
 	{
 		tmp_x = sin(cub->p->angle) * step;
-		tmp_y = -1 * cos(cub->p->angle) * step;
+		tmp_y = cos(cub->p->angle) * step * -1;
 	}
 	else if (cub->p->u_d != 0)
 	{
