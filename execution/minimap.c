@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:05:18 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/24 16:52:47 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/27 21:51:33 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,12 @@ void	draw_mini_player(t_cub *cub, int x, int y, int color)
 	int	j;
 
 	i = -1;
-	while (++i < MINI_TILE_SIZE / 2)
+	while (++i < MINI_TILE_SIZE / 4)
 	{
 		j = -1;
-		while (++j < MINI_TILE_SIZE / 2)
+		while (++j < MINI_TILE_SIZE / 4)
 			mlx_put_pixel(cub->minimap_img, x + i, y + j, color);
 	}
-	x += MINI_TILE_SIZE / 4;
-	y += MINI_TILE_SIZE / 4;
-	cast_rays(cub, x, y);
 }
 
 void	draw_minimap(t_cub *cub)

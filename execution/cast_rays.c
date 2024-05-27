@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:17:40 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/27 18:21:01 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/27 21:43:05 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,10 +173,10 @@ void cast_rays(t_cub *cub, int x, int y)
 			ray_x = cub->ray->h_x;
 			ray_y = cub->ray->h_y;
 		}
-		draw_line(cub, x, y,
-		ray_x,
-		ray_y,
-		get_rgba(0, 0, 255, 255));
+		//draw_line(cub, x, y,
+		//ray_x,
+		//ray_y,
+		//get_rgba(0, 0, 255, 255));
 		render_wall(cub, col);
 		cub->ray->ray_angle += cub->p->fov_rd / S_W;
 		get_angle_facing(cub->ray);
