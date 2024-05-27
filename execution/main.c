@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:09:29 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/27 22:09:19 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/27 23:24:59 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void start_the_game(t_data *data)
 		exit_on_error("mlx_new_image() failed\n", 23);
 	cub->minimap_img = mlx_new_image(cub->mlx_p, MINIMAP_W, MINIMAP_H);
 	if (!cub->minimap_img || (mlx_image_to_window(cub->mlx_p,
-		cub->minimap_img, 0, S_H - MINIMAP_H) < 0))
+		cub->minimap_img, 5, 5) < 0))
 		exit_on_error("mlx_new_image() failed\n", 23);
 	init_the_player(cub);
 	mlx_key_hook(cub->mlx_p, key_hooks, cub);
