@@ -11,7 +11,8 @@ EXECUTION = execution/main.c\
 			execution/init.c\
 			execution/hooks.c\
 			execution/update_vars.c\
-			execution/cast_rays.c
+			execution/cast_rays.c\
+			execution/render_wall.c
 
 SRCS = 	$(HEAP_CONTROL)\
 		$(EXECUTION)
