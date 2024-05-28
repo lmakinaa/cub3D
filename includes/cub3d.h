@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/28 16:07:49 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/28 18:25:01 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,10 @@ void			new_img(t_cub *cub, int what_img);
 void			key_hooks(mlx_key_data_t k, void *m);
 void 			game_loop(void *m);
 void 			draw_line(t_cub *cub, int beginX, int beginY, int endX, int endY, int color);
-int 			get_rgba(int r, int g, int b, int a);
+int 			get_rgba(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
 void			update_vars(t_cub *cub);
 double			map_angle(double angle);
 void			render_wall(t_cub *mlx, int ray);
+int				get_texture_pixel(mlx_image_t *texture, int x, int y);
 
 #endif

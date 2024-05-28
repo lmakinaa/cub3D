@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:43:23 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/27 23:25:06 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/28 18:24:23 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	draw_line(t_cub *cub, int beginX, int beginY, int endX, int endY, int color
 	}
 }
 
-int get_rgba(int r, int g, int b, int a)
+int get_rgba(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
 {
     return (r << 24 | g << 16 | b << 8 | a);
 }
@@ -82,4 +82,20 @@ double	map_angle(double angle)
 	else if (angle > (2 * M_PI))
 		angle -= (2 * M_PI);
 	return (angle);
+}
+
+int	get_texture_pixel(mlx_image_t *texture, int x, int y)
+{
+	unsigned char	a;
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+	unsigned char	*offset;
+
+	offset = &texture->pixels[((y * texture->width) + x) * 4];
+	r = offset[0];
+	g = offset[1];
+	b = offset[2];
+	a = offset[3];
+	return (get_rgba(r, g, b, a));
 }
