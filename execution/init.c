@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:41:45 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/28 20:33:02 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/28 20:58:09 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ t_data	*init_data(void)
 
 void init_the_player(t_cub *cub)
 {
-	cub->p->x_pixel = cub->data->p_x * TILE_SIZE + TILE_SIZE / 2; // player x position in pixels in the center of the tile
-	cub->p->y_pixel = cub->data->p_y * TILE_SIZE + TILE_SIZE / 2; // player y position in pixels in the center of the tile
-	cub->p->fov_rd = (FOV * M_PI) / 180; // field of view in radians
-	cub->p->angle = M_PI / 2; // player angle
+	cub->p->x_pixel = cub->data->p_x * TILE_SIZE + TILE_SIZE / 2;
+	cub->p->y_pixel = cub->data->p_y * TILE_SIZE + TILE_SIZE / 2;
+	cub->p->fov_rd = (FOV * M_PI) / 180;
+	cub->p->angle = M_PI / 2;
 	cub->ray->n_rays = (float) N_RAYS;
 }
