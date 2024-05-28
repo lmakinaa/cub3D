@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:09:29 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/28 20:24:08 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/28 23:00:58 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void start_the_game(t_data *data)
 	if (!tex)
 		exit(1); // exit cleanly
 	cub->data->texture = mlx_texture_to_image(cub->mlx_p, tex);
-	if (mlx_image_to_window(cub->mlx_p, cub->data->texture, 0, 0) < 0)
-		exit(1); // exit cleanly
+	//if (mlx_image_to_window(cub->mlx_p, cub->data->texture, 0, 0) < 0)
+	//	exit(1); // exit cleanly
 	init_the_player(cub);
 	mlx_key_hook(cub->mlx_p, key_hooks, cub);
 	mlx_loop_hook(cub->mlx_p, game_loop, cub);
