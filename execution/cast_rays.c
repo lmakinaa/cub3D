@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:17:40 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/27 21:43:05 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/28 14:54:23 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ double	h_intersec_distance(t_cub *cub, double ray_angle)
 	adjust_intersec(cub->ray, 1, &step_x, &step_y, 1);
 	while (start_x >= 0 && start_x <= S_W && start_y >= 0 && start_y <= S_H)
 	{
-		(!cub->ray->facing_u_d) && (start_y--);
-		if (is_wall(cub, start_y, start_x))
+		if ((!cub->ray->facing_u_d && is_wall(cub, start_y - 1, start_x))
+			|| is_wall(cub, start_y, start_x))
 			break ;
 		start_y += step_y;
 		start_x += step_x;
@@ -135,8 +135,8 @@ double	v_interse_distance(t_cub *cub, double ray_angle)
 	adjust_intersec(cub->ray, 1, &step_x, &step_y, 0);
 	while (start_x >= 0 && start_x <= S_W && start_y >= 0 && start_y <= S_H)
 	{
-		(!cub->ray->facing_l_r) && (start_x--);
-		if (is_wall(cub, start_y, start_x))
+		if ((!cub->ray->facing_l_r && is_wall(cub, start_y, start_x - 1))
+			|| is_wall(cub, start_y, start_x))
 			break ;
 		start_y += step_y;
 		start_x += step_x;
