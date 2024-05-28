@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/28 18:25:01 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/28 18:36:27 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct s_data
 	int				p_y;
 	int				w_map;
 	int				h_map;
+	mlx_image_t 	*texture;
 	struct s_cub	*cub;
 }		t_data;
 

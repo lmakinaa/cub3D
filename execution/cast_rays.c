@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:17:40 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/28 16:07:05 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/28 18:56:43 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,38 @@ double	v_interse_distance(t_cub *cub, double ray_angle)
 	return (d);
 }
 
+//void draw_slice(t_cub *cub, int col, double ray_length)
+//{
+//    // Calculate the wall height
+//    int wall_height = (int)(S_H / ray_length);
+
+//    // Calculate the start and end positions for the wall slice
+//    int start = (S_H / 2) - (wall_height / 2);
+//    start = start < 0 ? 0 : start;
+//    int end = (S_H / 2) + (wall_height / 2);
+//    end = end > S_H ? S_H : end;
+
+//    // Draw the ceiling, wall, and floor
+//    for (int y = 0; y < S_H; y++)
+//    {
+//        if (y < start)
+//        {
+//            // Draw the ceiling
+//            mlx_put_pixel(cub->img, col, y, get_rgba(255, 255, 255, 255)); // White color
+//        }
+//        else if (y >= start && y < end)
+//        {
+//            // Draw the wall
+//            mlx_put_pixel(cub->img, col, y, get_texture_pixel(cub->data->texture, col, y)); // Blue color
+//        }
+//        else
+//        {
+//            // Draw the floor
+//            mlx_put_pixel(cub->img, col, y, get_rgba(128, 128, 128, 255)); // Gray color
+//        }
+//    }
+//}
+
 void cast_rays(t_cub *cub, int x, int y)
 {
 	int	col;
@@ -173,6 +205,7 @@ void cast_rays(t_cub *cub, int x, int y)
 			ray_x = cub->ray->h_x;
 			ray_y = cub->ray->h_y;
 		}
+		//draw_slice(cub, col, cub->ray->distance_to_wall);
 		//draw_line(cub, x, y,
 		//MINIMAP_SCALE * ray_x,
 		//MINIMAP_SCALE * ray_y,
