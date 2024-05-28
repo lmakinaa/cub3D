@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:09:29 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/28 18:41:51 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/28 20:24:08 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	game_loop(void *m)
 
 void start_the_game(t_data *data)
 {
-	t_cub	*cub;
+	t_cub			*cub;
+	mlx_texture_t	*tex;
 
 	cub = data->cub;
 	cub->data = data;
@@ -43,7 +44,12 @@ void start_the_game(t_data *data)
 	if (!cub->minimap_img || (mlx_image_to_window(cub->mlx_p,
 		cub->minimap_img, 5, 5) < 0))
 		exit_on_error("mlx_new_image() failed\n", 23);
-	cub->data->texture = mlx_texture_to_image(cub->mlx_p, mlx_load_png("/Users/ijaija/asset.png"));
+	tex = mlx_load_png("/Users/ijaija/asset.png");
+	if (!tex)
+		exit(1); // exit cleanly
+	cub->data->texture = mlx_texture_to_image(cub->mlx_p, tex);
+	if (mlx_image_to_window(cub->mlx_p, cub->data->texture, 0, 0) < 0)
+		exit(1); // exit cleanly
 	init_the_player(cub);
 	mlx_key_hook(cub->mlx_p, key_hooks, cub);
 	mlx_loop_hook(cub->mlx_p, game_loop, cub);
