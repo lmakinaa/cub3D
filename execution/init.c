@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:41:45 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/28 18:41:12 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/28 20:33:02 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ t_data	*init_data(void)
 	res->map2d[7] = strdup("1001000000001000001000001");
 	res->map2d[8] = strdup("1111111111111111111111111");
 	res->map2d[9] = NULL;
-	res->p_y = 3; // player y position in the map
-	res->p_x = 14; // player x position in the map
-	res->w_map = 25; // map width
-	res->h_map = 9; // map height
-	return (res); // return the data structure
+	res->p_y = 3;
+	res->p_x = 14;
+	res->w_map = 25;
+	res->h_map = 9;
+	return (res);
 }
 
 void init_the_player(t_cub *cub)
