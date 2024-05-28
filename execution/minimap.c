@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:05:18 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/28 16:06:53 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/28 16:12:24 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@ void	draw_mini_player(t_cub *cub, int x, int y, int color)
 		while (++j < MINI_TILE_SIZE / 4)
 			mlx_put_pixel(cub->minimap_img, x + i, y + j, color);
 	}
-	//x += 2;
-	//y += 2;
-	//cast_rays(cub, x, y);
 }
 
 void	draw_minimap(t_cub *cub)
@@ -58,14 +55,13 @@ void	draw_minimap(t_cub *cub)
 		while (++x < cub->data->w_map)
 		{
 			if (map[y][x] == '1')
-				color = 0xFF0F00FF;
+				color = 0x000000FF;
 			else if (map[y][x] == '0' || map[y][x] == 'P')
 				color = C_TRANSPARENT;
 			draw_tile(cub, x * MINI_TILE_SIZE, y * MINI_TILE_SIZE, color);
 		}
 	}
-	draw_mini_player(cub, MINIMAP_SCALE * cub->p->x_pixel, MINIMAP_SCALE * cub->p->y_pixel, get_rgba(0, 0, 255, 255));
-	
+	draw_mini_player(cub, MINIMAP_SCALE * cub->p->x_pixel, MINIMAP_SCALE * cub->p->y_pixel, 0xFF0F00FF);
 }
 
 void	generate_minimap(t_cub *cub)
