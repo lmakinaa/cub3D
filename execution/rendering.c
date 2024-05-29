@@ -6,11 +6,28 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 18:18:39 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/29 17:56:06 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/29 18:58:57 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	put_texture(t_cub *cub, int x, int y)
+{
+	int		p_x;
+	int		p_y;
+	float	scale_factor;
+	
+	p_x = x % TILE_SIZE;
+	p_y = y % TILE_SIZE;
+	//printf("%d--%d//%d--%d\n", y, p_y, x, p_x);
+	//sleep(2);
+    scale_factor = (float)TILE_SIZE / cub->data->texture->width;
+    p_x = (int)(p_x * scale_factor);
+    scale_factor = (float)TILE_SIZE / cub->data->texture->height;
+    p_y = (int)(p_y * scale_factor);
+	mlx_put_pixel(cub->img, x, y, get_texture_pixel(cub->data->texture, p_x, p_y));
+}
 
 void	put_sky_n_floor(t_cub *cub, int s_y, int e_y, int col)
 {
@@ -27,7 +44,8 @@ void	put_sky_n_floor(t_cub *cub, int s_y, int e_y, int col)
 void	put_wall(t_cub *cub, int s_y, int e_y, int col)
 {
 	while (s_y < e_y)
-		mlx_put_pixel(cub->img, col, s_y++, get_rgba(255, 255, 0, 100));
+		//mlx_put_pixel(cub->img, col, s_y++, get_rgba(255, 255, 0, 100));
+		put_texture(cub, col, s_y++);
 }
 
 // distance to projection plane = (S_W / 2) / tan(FOV / 2)
