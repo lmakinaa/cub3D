@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/28 18:36:27 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/29 14:53:53 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include "MLX42.h"
 # include <string.h>
 # include <stdio.h>
+
+# define ASSET1 "/Users/ijaija/asset.png"
 
 # define MAIN 0
 # define MINIMAP 1
