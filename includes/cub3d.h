@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/29 17:08:32 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/29 18:35:31 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <string.h>
 # include <stdio.h>
 
-# define ASSET1 "/Users/ijaija/asset.png"
+# define ASSET1 "/Users/ijaija/asset1.png"
 
 # define MAIN 0
 # define MINIMAP 1
