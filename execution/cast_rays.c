@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:17:40 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/28 18:56:43 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/29 17:04:15 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,8 +210,9 @@ void cast_rays(t_cub *cub, int x, int y)
 		//MINIMAP_SCALE * ray_x,
 		//MINIMAP_SCALE * ray_y,
 		//get_rgba(0, 0, 255, 255));
-		render_wall(cub, col);
-		cub->ray->ray_angle += cub->p->fov_rd / S_W;
+		//render_wall(cub, col);
+		render_obstacles(cub, col);
+		cub->ray->ray_angle = map_angle(cub->ray->ray_angle + cub->p->fov_rd / S_W);
 		get_angle_facing(cub->ray);
 	}
 }

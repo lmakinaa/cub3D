@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:05:18 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/28 16:12:24 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/29 17:07:28 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,4 @@ void	draw_minimap(t_cub *cub)
 		}
 	}
 	draw_mini_player(cub, MINIMAP_SCALE * cub->p->x_pixel, MINIMAP_SCALE * cub->p->y_pixel, 0xFF0F00FF);
-}
-
-void	generate_minimap(t_cub *cub)
-{
-	new_img(cub, MINIMAP);
-	draw_minimap(cub);
 }
