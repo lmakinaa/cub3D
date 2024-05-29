@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 18:18:39 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/29 17:04:36 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/29 17:56:06 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,8 @@ void	render_obstacles(t_cub *cub, int col)
 	double	proj_plane_dist;
 	double	wall_height;
 
-	//cub->ray->ray_angle = map_angle(cub->ray->ray_angle);
-	cub->ray->distance_to_wall *= cos(map_angle(cub->ray->ray_angle - cub->p->angle)); // fix the fisheye
 	proj_plane_dist = (S_W / 2) / tan(cub->p->fov_rd / 2);
+	cub->ray->distance_to_wall *= cos((cub->ray->ray_angle - cub->p->angle));
 	wall_height = (TILE_SIZE / cub->ray->distance_to_wall) * proj_plane_dist;
 	double	start_p = (S_H / 2) - (wall_height / 2);
 	if (start_p < 0)
