@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/29 16:02:01 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/29 17:08:32 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,18 +89,14 @@ typedef struct s_cub
 
 void 			cast_rays(t_cub *cub, int x, int y);
 void			draw_minimap(t_cub *cub);
-void			display_img(t_cub *cub, int what_img);
-void			generate_minimap(t_cub *cub);
 t_data			*init_data(void);
 void			init_the_player(t_cub *cub);
-void			new_img(t_cub *cub, int what_img);
 void			key_hooks(mlx_key_data_t k, void *m);
 void 			game_loop(void *m);
 void 			draw_line(t_cub *cub, int beginX, int beginY, int endX, int endY, int color);
 int 			get_rgba(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
 void			update_vars(t_cub *cub);
 double			map_angle(double angle);
-void			render_wall(t_cub *mlx, int ray);
 int				get_texture_pixel(mlx_image_t *texture, int x, int y);
 void			render_obstacles(t_cub *cub, int col);
 
