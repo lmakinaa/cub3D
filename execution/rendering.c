@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 18:18:39 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/30 17:42:57 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/30 17:45:40 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void	put_wall(t_cub *cub, int s_y, int e_y, int col, float wall_height)
 {
-	int texture_offset_x = cub->ray->tex_offset * cub->data->texture->width;
-	texture_offset_x -= (texture_offset_x == 50);
+	int tex_offset_x = cub->ray->tex_offset * cub->data->texture->width;
+	tex_offset_x -= (tex_offset_x == 50);
 	int wall_start = s_y;
 	while (s_y < e_y)
 	{
-		float texture_offset_y = (((float)s_y - (float)wall_start)
+		float tex_offset_y = (((float)s_y - (float)wall_start)
 				/ (float) wall_height) * cub->data->texture->height;
-		texture_offset_y -= (texture_offset_y == 50);
+		tex_offset_y -= (tex_offset_y == 50);
 		if (s_y < 0 || s_y > S_H)
 		{
 			s_y++;
 			continue ;
 		}
 		mlx_put_pixel(cub->img, col, s_y,
-			get_texture_pixel(cub->data->texture, texture_offset_x, texture_offset_y));
+			get_texture_pixel(cub->data->texture, tex_offset_x, tex_offset_y));
 		s_y++;
 	}
 }
