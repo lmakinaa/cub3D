@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/30 11:27:57 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/30 15:33:15 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@
 
 typedef struct s_player
 {
-	int		x_pixel; // player x position in pixels
-	int		y_pixel; // player y position in pixels
-	double	angle; // player angle
-	float	fov_rd; // field of view in radians
-	int		rot; // rotation flag
-	int		l_r; // left right flag
-	int		u_d; // up down flag
+	int		x_pixel;
+	int		y_pixel;
+	double	angle;
+	float	fov_rd;
+	int		rot;
+	int		l_r;
+	int		u_d;
 }		t_player;
 
 typedef struct s_ray
@@ -58,13 +58,13 @@ typedef struct s_ray
 	double	distance_to_wall;
 	int		flag_if_wall;
 	float	n_rays;
-	int		facing_u_d; // 0 for up and 1 for down
-	int		facing_l_r; // 0 for left and 1 for right
+	int		facing_u_d;
+	int		facing_l_r;
 	double	v_x;
 	double	v_y;
 	double	h_x;
 	double	h_y;
-	float	current_tex;
+	float	tex_offset;
 }		t_ray;
 
 typedef struct s_data
@@ -85,7 +85,7 @@ typedef struct s_cub
 	mlx_t			*mlx_p;
 	t_ray			*ray;
 	t_data			*data;
-	t_player		*p; // the player structure
+	t_player		*p;
 } 		t_cub;
 
 void 			cast_rays(t_cub *cub, int x, int y);
