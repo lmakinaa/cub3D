@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:17:40 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/30 16:37:18 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/30 16:37:33 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,8 +168,6 @@ void cast_rays(t_cub *cub, int x, int y)
 		else
 		{
 			cub->ray->distance_to_wall = h_d;
-			cub->ray->v_x = cub->ray->h_x;
-			cub->ray->v_y = cub->ray->h_y;
 			cub->ray->tex_offset = (cub->ray->h_x / TILE_SIZE)
 			- ((int)(cub->ray->h_x / TILE_SIZE));
 		}
