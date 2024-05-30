@@ -6,28 +6,11 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 18:18:39 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/29 18:58:57 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/30 11:26:37 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	put_texture(t_cub *cub, int x, int y)
-{
-	int		p_x;
-	int		p_y;
-	float	scale_factor;
-	
-	p_x = x % TILE_SIZE;
-	p_y = y % TILE_SIZE;
-	//printf("%d--%d//%d--%d\n", y, p_y, x, p_x);
-	//sleep(2);
-    scale_factor = (float)TILE_SIZE / cub->data->texture->width;
-    p_x = (int)(p_x * scale_factor);
-    scale_factor = (float)TILE_SIZE / cub->data->texture->height;
-    p_y = (int)(p_y * scale_factor);
-	mlx_put_pixel(cub->img, x, y, get_texture_pixel(cub->data->texture, p_x, p_y));
-}
 
 void	put_sky_n_floor(t_cub *cub, int s_y, int e_y, int col)
 {
@@ -41,11 +24,19 @@ void	put_sky_n_floor(t_cub *cub, int s_y, int e_y, int col)
 		mlx_put_pixel(cub->img, col, i--, 0xF5F005FF);
 }
 
-void	put_wall(t_cub *cub, int s_y, int e_y, int col)
+void	put_wall(t_cub *cub, int s_y, int e_y, int col, double wall_height, float present_texture)
 {
+	float texture_offset_x = present_texture * cub->data->texture->width;
+	int wall_start = s_y;
 	while (s_y < e_y)
-		//mlx_put_pixel(cub->img, col, s_y++, get_rgba(255, 255, 0, 100));
-		put_texture(cub, col, s_y++);
+	{
+		float texture_offset_y = (((float)s_y - (float)wall_start)
+				/ (float)wall_height) * cub->data->texture->height;
+		if (s_y >= 0 && s_y < S_H)
+			mlx_put_pixel(cub->img, col, (int)s_y,
+				get_texture_pixel(cub->data->texture, texture_offset_x, texture_offset_y));
+		s_y += 1;
+	}
 }
 
 // distance to projection plane = (S_W / 2) / tan(FOV / 2)
