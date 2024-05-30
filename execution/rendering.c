@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 18:18:39 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/30 11:28:21 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/30 11:38:38 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	put_sky_n_floor(t_cub *cub, int s_y, int e_y, int col)
 		mlx_put_pixel(cub->img, col, i--, 0xF5F005FF);
 }
 
-void	put_wall(t_cub *cub, int s_y, int e_y, int col, double wall_height)
+void	put_wall(t_cub *cub, int s_y, int e_y, int col, float wall_height)
 {
-	float texture_offset_x = cub->ray->current_tex * cub->data->texture->width;
+	int texture_offset_x = cub->ray->current_tex * cub->data->texture->width;
 	int wall_start = s_y;
 	while (s_y < e_y)
 	{
-		float texture_offset_y = (((float)s_y - (float)wall_start)
-				/ (float)wall_height) * cub->data->texture->height;
+		int texture_offset_y = (((float)s_y - (float)wall_start)
+				/ wall_height) * cub->data->texture->height;
 		if (s_y >= 0 && s_y < S_H)
 			mlx_put_pixel(cub->img, col, (int)s_y,
 				get_texture_pixel(cub->data->texture, texture_offset_x, texture_offset_y));
