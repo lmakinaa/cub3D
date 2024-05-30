@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:17:40 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/30 11:03:19 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/30 11:34:11 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,20 +192,27 @@ void cast_rays(t_cub *cub, int x, int y)
 		double	h_d = h_intersec_distance(cub, map_angle(cub->ray->ray_angle));
 		double	v_d = v_interse_distance(cub, map_angle(cub->ray->ray_angle));
 		if (v_d <= h_d)
+		{
 			cub->ray->distance_to_wall = v_d;
+			cub->ray->current_tex = (cub->ray->v_y / TILE_SIZE)
+			- ((int)(cub->ray->v_y / TILE_SIZE));
+			//render_obstacles(cub, col);
+		}
 		else
 		{
 			cub->ray->distance_to_wall = h_d;
 			cub->ray->v_x = cub->ray->h_x;
 			cub->ray->v_y = cub->ray->h_y;
+			cub->ray->current_tex = (cub->ray->v_x / TILE_SIZE)
+			- ((int)(cub->ray->v_x / TILE_SIZE));
 		}
+			render_obstacles(cub, col);
 		//draw_slice(cub, col, cub->ray->distance_to_wall);
 		//draw_line(cub, x, y,
 		//MINIMAP_SCALE * ray_x,
 		//MINIMAP_SCALE * ray_y,
 		//get_rgba(0, 0, 255, 255));
 		//render_wall(cub, col);
-		render_obstacles(cub, col);
 		cub->ray->ray_angle = map_angle(cub->ray->ray_angle + cub->p->fov_rd / S_W);
 		get_angle_facing(cub->ray);
 	}

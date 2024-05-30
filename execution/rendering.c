@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 18:18:39 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/30 11:26:37 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/30 11:28:21 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	put_sky_n_floor(t_cub *cub, int s_y, int e_y, int col)
 		mlx_put_pixel(cub->img, col, i--, 0xF5F005FF);
 }
 
-void	put_wall(t_cub *cub, int s_y, int e_y, int col, double wall_height, float present_texture)
+void	put_wall(t_cub *cub, int s_y, int e_y, int col, double wall_height)
 {
-	float texture_offset_x = present_texture * cub->data->texture->width;
+	float texture_offset_x = cub->ray->current_tex * cub->data->texture->width;
 	int wall_start = s_y;
 	while (s_y < e_y)
 	{
@@ -55,6 +55,6 @@ void	render_obstacles(t_cub *cub, int col)
 	double	end_p = (S_H / 2) + (wall_height / 2);
 	if (end_p > S_H)
 		end_p = S_H;
-	put_wall(cub, start_p, end_p, col);
+	put_wall(cub, start_p, end_p, col, wall_height);
 	put_sky_n_floor(cub, start_p, end_p, col);
 }
