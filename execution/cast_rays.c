@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:17:40 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/29 17:04:15 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/30 11:03:19 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,21 +189,15 @@ void cast_rays(t_cub *cub, int x, int y)
 	col = -1;
 	while (++col < N_RAYS)
 	{
-		double ray_x = 0;
-        double ray_y = 0;
 		double	h_d = h_intersec_distance(cub, map_angle(cub->ray->ray_angle));
 		double	v_d = v_interse_distance(cub, map_angle(cub->ray->ray_angle));
 		if (v_d <= h_d)
-		{
 			cub->ray->distance_to_wall = v_d;
-			ray_x = cub->ray->v_x;
-			ray_y = cub->ray->v_y;
-		}
 		else
 		{
 			cub->ray->distance_to_wall = h_d;
-			ray_x = cub->ray->h_x;
-			ray_y = cub->ray->h_y;
+			cub->ray->v_x = cub->ray->h_x;
+			cub->ray->v_y = cub->ray->h_y;
 		}
 		//draw_slice(cub, col, cub->ray->distance_to_wall);
 		//draw_line(cub, x, y,
