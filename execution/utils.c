@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:43:23 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/29 17:07:41 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/30 17:41:23 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ double	map_angle(double angle)
 	return (angle);
 }
 
-int	get_texture_pixel(mlx_image_t *texture, int x, int y)
+uint32_t	get_texture_pixel(mlx_image_t *texture, int x, int y)
 {
 	unsigned char	a;
 	unsigned char	r;
@@ -64,4 +64,24 @@ int	get_texture_pixel(mlx_image_t *texture, int x, int y)
 	b = offset[2];
 	a = offset[3];
 	return (get_rgba(r, g, b, a));
+}
+
+void	put_sky_n_floor(t_cub *cub)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < S_H / 2)
+	{
+		j = -1;
+		while (++j < S_W)
+			mlx_put_pixel(cub->img, j, i, 0xF5F5F5FF);
+	}
+	while (++i < S_H)
+	{
+		j = -1;
+		while (++j < S_W)
+			mlx_put_pixel(cub->img, j, i, 0xF5F005FF);
+	}
 }

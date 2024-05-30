@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/30 16:37:55 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/30 17:38:55 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ void 			draw_line(t_cub *cub, int beginX, int beginY, int endX, int endY, int co
 int 			get_rgba(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
 void			update_vars(t_cub *cub);
 double			map_angle(double angle);
-int				get_texture_pixel(mlx_image_t *texture, int x, int y);
+uint32_t		get_texture_pixel(mlx_image_t *texture, int x, int y);
 void			render_obstacles(t_cub *cub, int col);
+void			put_sky_n_floor(t_cub *cub);
 
 #endif

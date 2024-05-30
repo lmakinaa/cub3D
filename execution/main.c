@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:09:29 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/30 16:01:12 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/30 17:39:24 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	game_loop(void *m)
 
 	cub = m;
 	update_vars(cub);
+	put_sky_n_floor(cub);
 	cast_rays(cub, 0, 0);
 	draw_minimap(cub);
 }
@@ -44,6 +45,7 @@ void start_the_game(t_data *data)
 		cub->minimap_img, 5, 5) < 0))
 		exit_on_error("mlx_new_image() failed\n", 23);
 	tex = mlx_load_png(ASSET1);
+	//printf("%d\n", tex->bytes_per_pixel);
 	if (!tex)
 		exit(1); // exit cleanly
 	cub->data->texture = mlx_texture_to_image(cub->mlx_p, tex);

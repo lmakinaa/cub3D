@@ -6,36 +6,30 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 18:18:39 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/30 17:14:30 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/30 17:42:57 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	put_sky_n_floor(t_cub *cub, int s_y, int e_y, int col)
-{
-	int	i;
-
-	i = 0;
-	while (i < s_y)
-		mlx_put_pixel(cub->img, col, i++, 0xF5F5F5FF);
-	i = S_H;
-	while (i > e_y)
-		mlx_put_pixel(cub->img, col, i--, 0xF5F005FF);
-}
-
 void	put_wall(t_cub *cub, int s_y, int e_y, int col, float wall_height)
 {
 	int texture_offset_x = cub->ray->tex_offset * cub->data->texture->width;
+	texture_offset_x -= (texture_offset_x == 50);
 	int wall_start = s_y;
 	while (s_y < e_y)
 	{
 		float texture_offset_y = (((float)s_y - (float)wall_start)
 				/ (float) wall_height) * cub->data->texture->height;
-		if (s_y >= 0 && s_y < S_H)
-			mlx_put_pixel(cub->img, col, s_y,
-				get_texture_pixel(cub->data->texture, texture_offset_x, texture_offset_y));
-		s_y += 1;
+		texture_offset_y -= (texture_offset_y == 50);
+		if (s_y < 0 || s_y > S_H)
+		{
+			s_y++;
+			continue ;
+		}
+		mlx_put_pixel(cub->img, col, s_y,
+			get_texture_pixel(cub->data->texture, texture_offset_x, texture_offset_y));
+		s_y++;
 	}
 }
 
@@ -54,5 +48,5 @@ void	render_obstacles(t_cub *cub, int col)
 	if (end_p > S_H)
 		end_p = S_H;
 	put_wall(cub, start_p, end_p, col, wall_height);
-	put_sky_n_floor(cub, start_p, end_p, col);
+	//put_sky_n_floor(cub, start_p, end_p, col);
 }
