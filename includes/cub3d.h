@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/30 15:33:15 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/30 16:37:55 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ typedef struct s_ray
 {
 	double	ray_angle;
 	double	distance_to_wall;
-	int		flag_if_wall;
 	float	n_rays;
 	int		facing_u_d;
 	int		facing_l_r;
