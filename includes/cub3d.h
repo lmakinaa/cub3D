@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/30 21:48:58 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/31 11:52:16 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@
 # include "MLX42.h"
 # include <string.h>
 # include <stdio.h>
+# include <fcntl.h>
 
-# define ASSET1 "/Users/ijaija/new-cub/textures/wall.png"
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# define ASSET1 "/Users/miguiji/desktop/ray_cast/wall.png"
 
 # define MAIN 0
 # define MINIMAP 1
@@ -100,5 +105,41 @@ double			map_angle(double angle);
 uint32_t		get_texture_pixel(mlx_image_t *texture, int x, int y);
 void			render_obstacles(t_cub *cub, int col);
 void			put_sky_n_floor(t_cub *cub);
+
+//------------------------------------------------------
+typedef struct s_map
+{
+	char    *NO;
+	char    *SO;
+	char    *WE;
+	char	*EA;
+	int     *F;
+	int     *C;
+	char    **map;
+} t_map;
+
+char	*ft_strtrim(char *str, char *set);
+int		ft_isdigit(int c);
+bool	range_checker(int *nbrs, int size);
+char	*get_next_line(int fd);
+void	*ft_memcpy(void *dst, const void *src, size_t len);
+void	*ft_memset(void *str, int c, size_t len);
+int     ft_atoi(const char *str);
+int     ft_isdigit(int c);
+int     ft_isalnum(int c);
+int     ft_isalpha(int c);
+char    **ft_split(char *original, char c);
+char    *ft_strdup(const char *str);
+char    *ft_strjoin(const char *s1, const char *s2);
+int     ft_strlen(const char *s);
+char    *ft_substr(const char *str, int start, int len);
+void	*ft_memmove(void *dst, const void *src, size_t len);
+void	*ft_memcpy(void *dst, const void *src, size_t len);
+void	*ft_memset(void *str, int c, size_t len);
+char	*ft_strchr(const char *str, int c);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+t_map	*is_valid_map(char **argv, char *line);
+void print_map_data(t_map *map_data);
+//------------------------------------------------------
 
 #endif

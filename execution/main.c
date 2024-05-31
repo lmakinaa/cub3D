@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:09:29 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/30 17:44:55 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/05/31 12:12:15 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,20 @@ void start_the_game(t_data *data)
 	mlx_loop_hook(cub->mlx_p, game_loop, cub);
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
 	t_data *data;
+	t_map   *map_data;
 
-	data = init_data();
-	start_the_game(data);
+	if (argc != 2)
+		return (exit_on_error("Error: invalid number of arguments\n", 35), 0);
+	map_data = is_valid_map(argv, NULL);
+	print_map_data(map_data);
+	// data = init_data();
+	// start_the_game(data);
 
-	mlx_loop(data->cub->mlx_p);
-	//mlx_terminate(data->cub->mlx_p);
-	heap_control(M_CLEAN, 0, 0, 0);
+	// mlx_loop(data->cub->mlx_p);
+	// mlx_terminate(data->cub->mlx_p);
+	//heap_control(M_CLEAN, 0, 0, 0);
 	return 0;
 }
