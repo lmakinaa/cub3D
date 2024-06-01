@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:41:45 by ijaija            #+#    #+#             */
-/*   Updated: 2024/06/01 11:02:30 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/06/01 11:06:24 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_data	*init_data(t_map *map_data)
 	int		i;
 
 	res = heap_control(M_ALLOC, sizeof(t_data), 0, 1);
-	res->map2d = map_data->map;
+	res->map_2d = map_data->map;
 	res->cub = heap_control(M_ALLOC, sizeof(t_cub), 0, 1);
 	res->p_y = 3;
 	res->p_x = 14;

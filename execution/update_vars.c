@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 01:23:44 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/28 16:07:45 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/06/01 11:06:24 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	p_movement(t_cub *mlx, double move_x, double move_y)
 
 	new_y = roundf(mlx->p->y_pixel + move_y);
 	new_x = roundf(mlx->p->x_pixel + move_x);
-	if (mlx->data->map2d[new_y / TILE_SIZE][new_x / TILE_SIZE] != '1')
+	if (mlx->data->map_2d[new_y / TILE_SIZE][new_x / TILE_SIZE] != '1')
 	{
 		mlx->p->x_pixel = new_x;
 		mlx->p->y_pixel = new_y;

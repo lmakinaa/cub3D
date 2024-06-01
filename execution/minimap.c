@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:05:18 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/29 17:07:28 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/06/01 11:06:24 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	draw_minimap(t_cub *cub)
 	char	**map;
 	int		color;
 
-	map = cub->data->map2d;
+	map = cub->data->map_2d;
 	y = -1;
 	while (++y < cub->data->h_map)
 	{
