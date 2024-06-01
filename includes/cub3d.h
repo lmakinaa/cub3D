@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/06/01 11:01:47 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/06/01 11:06:24 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ typedef struct s_ray
 
 typedef struct s_data
 {
-	char			**map2d;
+	char			**map_2d;
 	int				p_x;
 	int				p_y;
 	int				w_map;
