@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/06/01 11:06:24 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/06/01 17:30:14 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# define ASSET1 "/Users/miguiji/desktop/ray_cast/wall.png"
+# define ASSET1 "/Users/ijaija/new-cub/textures/wall.png"
 
 # define MAIN 0
 # define MINIMAP 1
@@ -92,6 +92,19 @@ typedef struct s_cub
 	t_player		*p;
 } 		t_cub;
 
+//------------------------------------------------------
+typedef struct s_map
+{
+	char    *NO;
+	char    *SO;
+	char    *WE;
+	char	*EA;
+	int     *F;
+	int     *C;
+	char    **map;
+	int		height;
+} t_map;
+
 void 			cast_rays(t_cub *cub, int x, int y);
 void			draw_minimap(t_cub *cub);
 t_data			*init_data(t_map *map_data);
@@ -106,18 +119,6 @@ uint32_t		get_texture_pixel(mlx_image_t *texture, int x, int y);
 void			render_obstacles(t_cub *cub, int col);
 void			put_sky_n_floor(t_cub *cub);
 
-//------------------------------------------------------
-typedef struct s_map
-{
-	char    *NO;
-	char    *SO;
-	char    *WE;
-	char	*EA;
-	int     *F;
-	int     *C;
-	char    **map;
-	int		height;
-} t_map;
 
 char	*ft_strtrim(char *str, char *set);
 int		ft_isdigit(int c);

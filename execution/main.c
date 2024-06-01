@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:09:29 by ijaija            #+#    #+#             */
-/*   Updated: 2024/06/01 11:42:06 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/06/01 17:32:11 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,9 @@ int main(int argc, char **argv)
 	map_data = is_valid_map(argv, NULL);
 	print_map_data(map_data);
 	data = init_data(map_data);
-	// start_the_game(data);
-
-	// mlx_loop(data->cub->mlx_p);
-	// mlx_terminate(data->cub->mlx_p);
-	//heap_control(M_CLEAN, 0, 0, 0);
+	start_the_game(data);
+	mlx_loop(data->cub->mlx_p);
+	mlx_terminate(data->cub->mlx_p);
+	heap_control(M_CLEAN, 0, 0, 0);
 	return 0;
 }
