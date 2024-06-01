@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:09:29 by ijaija            #+#    #+#             */
-/*   Updated: 2024/06/01 11:07:41 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/06/01 11:42:06 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int main(int argc, char **argv)
 		return (exit_on_error("Error: invalid number of arguments\n", 35), 0);
 	map_data = is_valid_map(argv, NULL);
 	print_map_data(map_data);
-	//data = init_data(map_data);
+	data = init_data(map_data);
 	// start_the_game(data);
 
 	// mlx_loop(data->cub->mlx_p);

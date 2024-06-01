@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:41:45 by ijaija            #+#    #+#             */
-/*   Updated: 2024/06/01 11:06:24 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/06/01 11:43:48 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ t_data	*init_data(t_map *map_data)
 	res->cub = heap_control(M_ALLOC, sizeof(t_cub), 0, 1);
 	res->p_y = 3;
 	res->p_x = 14;
+	res->h_map = map_data->height;
 	res->w_map = 25;
-	res->h_map = 9;
 	return (res);
 }
 
