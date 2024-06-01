@@ -58,7 +58,7 @@ static	int	alloc_move(char *original, char c, char **d_arr, int *i)
 	return (1);
 }
 
-char	**ft_split(char *original, char c)
+char	**ft_split(int *height, char *original, char c)
 {
 	char	**d_arr;
 	int		i;
@@ -69,7 +69,13 @@ char	**ft_split(char *original, char c)
 	d_arr = heap_control(1, (word_count(original, c) + 1) * sizeof(char *), 0, 0);
 	if (d_arr == NULL)
 		return (d_arr);
-	d_arr[word_count(original, c)] = NULL;
+	if (height)
+	{
+		(*height) = word_count(original, c);
+		d_arr[(*height)] = NULL;
+	}
+	else
+		d_arr[word_count(original, c)] = NULL;
 	if (!(alloc_move(original, c, d_arr, &i)))
 		return (NULL);
 	return (d_arr);

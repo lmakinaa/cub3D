@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:33:56 by miguiji           #+#    #+#             */
-/*   Updated: 2024/05/31 12:55:20 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/06/01 10:59:03 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void get_colors(int **color, char *line)
 	}
 	if (++flag == 3)
 	{
-		array = ft_split(line + start, ',');
+		array = ft_split(NULL, line + start, ',');
 		int *nbr = heap_control(M_ALLOC, sizeof(int) * 3, 0, 1);
 		while (flag--)
 		{
@@ -171,7 +171,7 @@ t_map	*is_valid_map(char **argv, char *line)
 		(1) && (tmp = one_line_map, one_line_map = ft_strjoin(tmp, line),
 			free(tmp), 1);
 	}
-	map_data->map = ft_split(one_line_map, '\n');
+	map_data->map = ft_split(&map_data->height, one_line_map, '\n');
 	return (check_map(map_data->map), close(fd), map_data);
 }
 

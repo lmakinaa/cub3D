@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:09:29 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/31 12:12:15 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/06/01 10:56:06 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ void start_the_game(t_data *data)
 
 int main(int argc, char **argv)
 {
-	t_data *data;
+	t_data	*data;
 	t_map   *map_data;
 
 	if (argc != 2)
 		return (exit_on_error("Error: invalid number of arguments\n", 35), 0);
 	map_data = is_valid_map(argv, NULL);
-	print_map_data(map_data);
-	// data = init_data();
+	//print_map_data(map_data);
+	data = init_data(map_data);
 	// start_the_game(data);
 
 	// mlx_loop(data->cub->mlx_p);

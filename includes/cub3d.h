@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/31 11:52:16 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/06/01 11:01:47 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ typedef struct s_cub
 
 void 			cast_rays(t_cub *cub, int x, int y);
 void			draw_minimap(t_cub *cub);
-t_data			*init_data(void);
+t_data			*init_data(t_map *map_data);
 void			init_the_player(t_cub *cub);
 void			key_hooks(mlx_key_data_t k, void *m);
 void 			game_loop(void *m);
@@ -116,6 +116,7 @@ typedef struct s_map
 	int     *F;
 	int     *C;
 	char    **map;
+	int		height;
 } t_map;
 
 char	*ft_strtrim(char *str, char *set);
@@ -128,7 +129,7 @@ int     ft_atoi(const char *str);
 int     ft_isdigit(int c);
 int     ft_isalnum(int c);
 int     ft_isalpha(int c);
-char    **ft_split(char *original, char c);
+char	**ft_split(int *height, char *original, char c);
 char    *ft_strdup(const char *str);
 char    *ft_strjoin(const char *s1, const char *s2);
 int     ft_strlen(const char *s);
@@ -139,7 +140,7 @@ void	*ft_memset(void *str, int c, size_t len);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 t_map	*is_valid_map(char **argv, char *line);
-void print_map_data(t_map *map_data);
+void	print_map_data(t_map *map_data);
 //------------------------------------------------------
 
 #endif
