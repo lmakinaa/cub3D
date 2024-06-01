@@ -6,29 +6,20 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:41:45 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/28 20:58:09 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/06/01 11:02:30 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_data	*init_data(void)
+t_data	*init_data(t_map *map_data)
 {
 	t_data *res;
+	int		i;
 
-	res = heap_control(M_ALLOC, sizeof(t_data), 0, 1); // init the data structure
-	res->map2d = heap_control(M_ALLOC, 10 * sizeof(char *), 0, 1); // init the map
+	res = heap_control(M_ALLOC, sizeof(t_data), 0, 1);
+	res->map2d = map_data->map;
 	res->cub = heap_control(M_ALLOC, sizeof(t_cub), 0, 1);
-	res->map2d[0] = strdup("1111111111111111111111111"); //fill the map
-	res->map2d[1] = strdup("1000000000000000000100001");
-	res->map2d[2] = strdup("1001000000000P00000000001");
-	res->map2d[3] = strdup("1001000000000000001000001");
-	res->map2d[4] = strdup("1001000000000000001000001");
-	res->map2d[5] = strdup("1001000000100000001000001");
-	res->map2d[6] = strdup("1001000000000000001000001");
-	res->map2d[7] = strdup("1001000000001000001000001");
-	res->map2d[8] = strdup("1111111111111111111111111");
-	res->map2d[9] = NULL;
 	res->p_y = 3;
 	res->p_x = 14;
 	res->w_map = 25;
