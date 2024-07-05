@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 18:18:39 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/05 09:22:39 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/05 09:27:08 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,4 @@ void	render_obstacles(t_cub *cub, int col)
 	if (end_p > S_H)
 		end_p = S_H;
 	put_wall(cub, start_p, end_p, col, wall_height);
-	//put_sky_n_floor(cub, start_p, end_p, col);
 }
