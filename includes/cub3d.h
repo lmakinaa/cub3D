@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/06/01 17:30:14 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/05 09:54:16 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,9 @@ double			map_angle(double angle);
 uint32_t		get_texture_pixel(mlx_image_t *texture, int x, int y);
 void			render_obstacles(t_cub *cub, int col);
 void			put_sky_n_floor(t_cub *cub);
+int				is_wall(t_cub *cub, double start_y, double start_x);
 
+//------------------------------------------------------
 
 char	*ft_strtrim(char *str, char *set);
 int		ft_isdigit(int c);
@@ -142,6 +144,5 @@ char	*ft_strchr(const char *str, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 t_map	*is_valid_map(char **argv, char *line);
 void	print_map_data(t_map *map_data);
-//------------------------------------------------------
 
 #endif

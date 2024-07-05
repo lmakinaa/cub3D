@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 01:23:44 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/05 09:45:35 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/05 09:55:08 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,17 @@ void	p_movement(t_cub *mlx, double move_x, double move_y)
 
 	new_y = roundf(mlx->p->y_pixel + move_y);
 	new_x = roundf(mlx->p->x_pixel + move_x);
-	if (mlx->data->map_2d[new_y / TILE_SIZE][new_x / TILE_SIZE] != '1')
+	if (!is_wall(mlx, new_y, new_x))
 	{
 		mlx->p->x_pixel = new_x;
 		mlx->p->y_pixel = new_y;
 	}
+	//if (mlx->data->map_2d[new_y / TILE_SIZE][new_x / TILE_SIZE] != '1')
+	//{
+	//	printf("%c\n", mlx->data->map_2d[new_y / TILE_SIZE][new_x / TILE_SIZE]);
+	//	mlx->p->x_pixel = new_x;
+	//	mlx->p->y_pixel = new_y;
+	//}
 }
 
 void	update_vars(t_cub *cub)
