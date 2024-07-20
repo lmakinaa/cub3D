@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:33:56 by miguiji           #+#    #+#             */
-/*   Updated: 2024/07/20 03:40:43 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/20 13:25:05 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,14 +154,12 @@ t_map	*is_valid_map(char **argv, char *line)
     if (ft_strnstr(argv[1] + (ft_strlen(argv[1]) - 4), ".cub", 4) == NULL)
 		exit_on_error("Error: invalid file extension\n", 30);
 	map_data = heap_control(1, sizeof(t_map), NULL, 1);
-	if (!map_data)
-		exit_on_error("Error: malloc(3) failed\n", 24);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		exit_on_error("Error: open(2) failed\n", 22);
 	while (1)
 	{
-		free(line);
+		heap_control(M_DEL, 0, line, 0);
 		line = get_next_line(fd);
 		if (!line)
 			break ;
@@ -172,7 +170,7 @@ t_map	*is_valid_map(char **argv, char *line)
 			continue ;
 		}
 		(1) && (tmp = one_line_map, one_line_map = ft_strjoin(tmp, line),
-			free(tmp), 1);
+			heap_control(M_DEL, 0, tmp, 0), 1);
 	}
 	map_data->map = ft_split(&map_data->height, one_line_map, '\n');
 	return (check_map(map_data->map, map_data), close(fd), map_data);
