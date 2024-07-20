@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:33:56 by miguiji           #+#    #+#             */
-/*   Updated: 2024/07/20 13:25:05 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/20 21:11:07 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,8 @@ bool check_map(char **map, t_map *data)
 				else if (map[i][j] != '0')
 				{
 					data->player = map[i][j];
-					data->p_x = i + 1;
-					data->p_y = j + 1;
+					data->p_x = i;
+					data->p_y = j;
 				}
 				if(!check_borders(map, i, j))
 					exit_on_error("Error: invalid map borders\n", 27);
@@ -154,6 +154,7 @@ t_map	*is_valid_map(char **argv, char *line)
     if (ft_strnstr(argv[1] + (ft_strlen(argv[1]) - 4), ".cub", 4) == NULL)
 		exit_on_error("Error: invalid file extension\n", 30);
 	map_data = heap_control(1, sizeof(t_map), NULL, 1);
+	map_data->width = 0;
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		exit_on_error("Error: open(2) failed\n", 22);
@@ -169,6 +170,8 @@ t_map	*is_valid_map(char **argv, char *line)
 				exit_on_error("Error: invalid map parameters\n", 30);
 			continue ;
 		}
+		if (strlen(line) - 1 > map_data->width)
+			map_data->width = strlen(line) - 1;
 		(1) && (tmp = one_line_map, one_line_map = ft_strjoin(tmp, line),
 			heap_control(M_DEL, 0, tmp, 0), 1);
 	}

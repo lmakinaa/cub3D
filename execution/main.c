@@ -6,7 +6,7 @@
 /*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:09:29 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/20 02:52:14 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/20 21:55:05 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void start_the_game(t_data *data)
 	cub->img = mlx_new_image(cub->mlx_p, S_W, S_H);
 	if (!cub->img || (mlx_image_to_window(cub->mlx_p, cub->img, 0, 0) < 0))
 		exit_on_error("mlx_new_image() failed\n", 23);
-	cub->minimap_img = mlx_new_image(cub->mlx_p, MINIMAP_W, MINIMAP_H);
+	cub->minimap_img = mlx_new_image(cub->mlx_p, cub->data->w_map * MINI_TILE_SIZE,
+		cub->data->h_map * MINI_TILE_SIZE);
 	if (!cub->minimap_img || (mlx_image_to_window(cub->mlx_p,
 		cub->minimap_img, 5, 5) < 0))
 		exit_on_error("mlx_new_image() failed\n", 23);
@@ -62,6 +63,10 @@ int main(int argc, char **argv)
 	if (argc != 2)
 		return (exit_on_error("Error: invalid number of arguments\n", 35), 0);
 	map_data = is_valid_map(argv, NULL);
+	map_data->textures[0] = map_data->NO;
+	map_data->textures[1] = map_data->SO;
+	map_data->textures[2] = map_data->WE;	
+	map_data->textures[3] = map_data->EA;
 	print_map_data(map_data);
 	data = init_data(map_data);
 	start_the_game(data);

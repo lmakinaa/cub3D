@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_vars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 01:23:44 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/20 13:53:55 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/20 21:54:11 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,6 @@ void	p_movement(t_cub *mlx, double move_x, double move_y)
 		mlx->p->x_pixel += move_x;
 		mlx->p->y_pixel += move_y;
 	}
-	//if (mlx->data->map_2d[new_y / TILE_SIZE][new_x / TILE_SIZE] != '1')
-	//{
-	//	printf("%c\n", mlx->data->map_2d[new_y / TILE_SIZE][new_x / TILE_SIZE]);
-	//	mlx->p->x_pixel = new_x;
-	//	mlx->p->y_pixel = new_y;
-	//}
 }
 
 void	update_vars(t_cub *cub)
