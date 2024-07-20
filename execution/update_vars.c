@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_vars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 01:23:44 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/20 03:31:48 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/20 13:53:55 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	ix_wall(t_cub *cub, double start_y, double start_x)
 if (y >= cub->data->h_map || x >= cub->data->w_map)
 		return (1);
 	if (cub->data->map_2d[y][x] == '1')
+		return (1);
+	if (cub->ray->distance_to_wall == 0)
 		return (1);
 	// x = (start_x + TILE_SIZE/4) / TILE_SIZE;
 	// y = (start_y + TILE_SIZE/4) / TILE_SIZE;
