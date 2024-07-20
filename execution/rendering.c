@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 18:18:39 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/20 13:43:36 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/20 15:41:51 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	render_obstacles(t_cub *cub, int col)
 
 	proj_plane_dist = (S_W / 2) / tan(cub->p->fov_rd / 2);
 	if (!cub->ray->distance_to_wall)
-		cub->ray->distance_to_wall = 3;
+		cub->ray->distance_to_wall = 0.1;
 	cub->ray->distance_to_wall *= cos((cub->ray->ray_angle - cub->p->angle));
 	// printf("%d\n", cub->ray->distance_to_wall);
 	if (cub->ray->distance_to_wall == 0 )
