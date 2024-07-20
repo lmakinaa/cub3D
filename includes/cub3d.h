@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/20 13:55:54 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/20 21:35:33 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,13 +99,15 @@ typedef struct s_map
 	char    *SO;
 	char    *WE;
 	char	*EA;
+	char	*textures[4];
 	int     *F;
 	int     *C;
 	char    **map;
-	char 		player;
-	int         p_x;
-	int 		p_y;		
+	char 	player;
+	int     p_x;
+	int 	p_y;		
 	int		height;
+	int		width;
 } t_map;
 
 void 			cast_rays(t_cub *cub, int x, int y);

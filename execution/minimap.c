@@ -6,7 +6,7 @@
 /*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:05:18 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/20 01:21:31 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/20 21:51:47 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ void	draw_minimap(t_cub *cub)
 		x = -1;
 		while (++x < cub->data->w_map)
 		{
-			if (map[y][x] == '1')
-				color = 0x000000FF;
-			else if (map[y][x] == '0' || map[y][x] == 'P')
+			if (map[y][x] == '0' || strchr("NSWE", map[y][x]))
 				color = C_TRANSPARENT;
+			else
+				color = 0x000000FF;
 			draw_tile(cub, x * MINI_TILE_SIZE, y * MINI_TILE_SIZE, color);
 		}
 	}
