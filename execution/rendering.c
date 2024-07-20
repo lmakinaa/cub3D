@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 18:18:39 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/20 03:40:12 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/20 13:43:36 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,13 @@ void	put_wall(t_cub *cub, int s_y, int e_y, int col, float wall_height)
 	int tex_offset_x = cub->ray->tex_offset * cub->data->texture->width;
 	tex_offset_x -= (tex_offset_x == cub->data->texture->width);
 	int wall_start = s_y;
+	if (s_y < 0)
+		s_y = 0;
 	while (s_y < e_y)
 	{
 		tex_offset_y = (((float)s_y - (float)wall_start)
 				/ (float) wall_height) * cub->data->texture->height;
 		tex_offset_y -= (tex_offset_y == cub->data->texture->height);
-		if (s_y < 0 || s_y > S_H)
-		{
-			s_y++;
-			continue ;
-		}
 		mlx_put_pixel(cub->img, col, s_y,
 			get_texture_pixel(cub->data->texture, tex_offset_x, tex_offset_y));
 		s_y++;
@@ -43,7 +40,7 @@ void	render_obstacles(t_cub *cub, int col)
 
 	proj_plane_dist = (S_W / 2) / tan(cub->p->fov_rd / 2);
 	if (!cub->ray->distance_to_wall)
-		return ;
+		cub->ray->distance_to_wall = 3;
 	cub->ray->distance_to_wall *= cos((cub->ray->ray_angle - cub->p->angle));
 	// printf("%d\n", cub->ray->distance_to_wall);
 	if (cub->ray->distance_to_wall == 0 )
