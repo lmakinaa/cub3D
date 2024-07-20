@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:01:07 by miguiji           #+#    #+#             */
-/*   Updated: 2024/05/21 22:02:30 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/20 13:26:48 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,23 @@ static int	allocation(char **buffer)
 
 	if (!(*buffer))
 	{
-		*buffer = (char *)malloc(BUFFER_SIZE + 1);
+		*buffer = (char *)heap_control(M_ALLOC, BUFFER_SIZE + 1, 0, 0);
 		if (!(*buffer))
 			return (0);
 		ft_memset(*buffer, 0, BUFFER_SIZE + 1);
 		return (1);
 	}
 	i = 0;
-	ptr = (char *)malloc(BUFFER_SIZE + ft_strlen(*buffer) + 1);
+	ptr = (char *)heap_control(M_ALLOC, BUFFER_SIZE + ft_strlen(*buffer) + 1, 0, 0);
 	if (!ptr)
-		return (free(*buffer), *buffer = NULL, 0);
+		return (heap_control(M_DEL, 0, *buffer, 0), *buffer = NULL, 0);
 	while ((*buffer)[i])
 	{
 		ptr[i] = (*buffer)[i];
 		i++;
 	}
 	ft_memset(ptr + i, 0, BUFFER_SIZE + 1);
-	free(*buffer);
+	heap_control(M_DEL, 0, *buffer, 0);
 	*buffer = ptr;
 	return (1);
 }
@@ -52,18 +52,18 @@ static char	*return_line(char **buffer, size_t len)
 	new_buffer = NULL;
 	str = ft_substr((const char *)*buffer, 0, len);
 	if (!str)
-		return (free(*buffer), *buffer = NULL, NULL);
+		return (heap_control(M_DEL, 0, *buffer, 0), *buffer = NULL, NULL);
 	if (len < i)
 	{
 		new_buffer = ft_substr((const char *)*buffer, len, i - len);
 		if (!new_buffer)
-			return (free(str), free(*buffer), *buffer = NULL, NULL);
-		free(*buffer);
+			return (heap_control(M_DEL, 0, str, 0), heap_control(M_DEL, 0, *buffer, 0), *buffer = NULL, NULL);
+		heap_control(M_DEL, 0, *buffer, 0);
 		*buffer = new_buffer;
 	}
 	else
 	{
-		free(*buffer);
+		heap_control(M_DEL, 0, *buffer, 0);
 		*buffer = NULL;
 	}
 	return (str);
@@ -107,7 +107,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, buffer, 0) < 0)
 	{
 		if (buffer)
-			return (free(buffer), buffer = NULL, NULL);
+			return (heap_control(M_DEL, 0, buffer, 0), buffer = NULL, NULL);
 		return (NULL);
 	}
 	line = read_wrp(&buffer, fd);
