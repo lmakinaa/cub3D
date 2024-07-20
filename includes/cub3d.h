@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/20 13:45:42 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/20 13:55:54 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define S_W 1000
 # define S_H 1000
 # define FOV 65
-# define TILE_SIZE (double)32
+# define TILE_SIZE 32.
 # define ROTATION_SPEED 2 * M_PI / 180
 # define PLAYER_SPEED 2
 # define N_RAYS S_W / 1
