@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/05 09:54:16 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/20 02:54:30 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# define ASSET1 "/Users/ijaija/new-cub/textures/wall.png"
+# define ASSET1 "./textures/wall.png"
 
 # define MAIN 0
 # define MINIMAP 1
@@ -36,7 +36,7 @@
 # define S_W 1900
 # define S_H 1000
 # define FOV 60
-# define TILE_SIZE 32
+# define TILE_SIZE (double)32
 # define ROTATION_SPEED 4 * M_PI / 180
 # define PLAYER_SPEED 4
 # define N_RAYS S_W / 1
@@ -102,6 +102,9 @@ typedef struct s_map
 	int     *F;
 	int     *C;
 	char    **map;
+	char 		player;
+	int         p_x;
+	int 		p_y;		
 	int		height;
 } t_map;
 

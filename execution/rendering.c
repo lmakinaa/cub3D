@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 18:18:39 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/05 09:57:34 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/20 03:40:12 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,22 @@ void	render_obstacles(t_cub *cub, int col)
 	double	wall_height;
 
 	proj_plane_dist = (S_W / 2) / tan(cub->p->fov_rd / 2);
-	//if (!cub->ray->distance_to_wall)
-	//	return ;
+	if (!cub->ray->distance_to_wall)
+		return ;
 	cub->ray->distance_to_wall *= cos((cub->ray->ray_angle - cub->p->angle));
-	// cub->ray->distance_to_wall have a problem
-	// it reach 0 and when calculating wall_height it result to inf
+	// printf("%d\n", cub->ray->distance_to_wall);
+	if (cub->ray->distance_to_wall == 0 )
+		{return ;}
+	else
+	{
 	wall_height = (TILE_SIZE / cub->ray->distance_to_wall) * proj_plane_dist;
 	double	start_p = (S_H / 2) - (wall_height / 2);
 	double	end_p = (S_H / 2) + (wall_height / 2);
 	if (end_p > S_H)
 		end_p = S_H;
 	put_wall(cub, start_p, end_p, col, wall_height);
+	}
+		
+	// cub->ray->distance_to_wall have a problem
+	// it reach 0 and when calculating wall_height it result to inf
 }

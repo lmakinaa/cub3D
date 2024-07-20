@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:41:45 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/05 09:42:51 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/20 03:45:44 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@ t_data	*init_data(t_map *map_data)
 	res = heap_control(M_ALLOC, sizeof(t_data), 0, 1);
 	res->map_2d = map_data->map;
 	res->cub = heap_control(M_ALLOC, sizeof(t_cub), 0, 1);
-	res->p_y = 4;
-	res->p_x = 25;
+	res->p_y = map_data->p_y;
+	res->p_x = map_data->p_x;
+	// res->p_y = 4;
+	// res->p_x = 28;
+	printf("%d\n", map_data->p_x);
+	printf("%d\n", map_data->p_y);
 	res->h_map = map_data->height;
 	res->w_map = 27;
 	return (res);
