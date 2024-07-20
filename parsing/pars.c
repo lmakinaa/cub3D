@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:33:56 by miguiji           #+#    #+#             */
-/*   Updated: 2024/06/01 17:28:22 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/20 03:40:43 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,11 +112,10 @@ bool	check_borders(char **map,int i, int j)
 	return (true);
 }
 
-bool check_map(char **map)
+bool check_map(char **map, t_map *data)
 {
 	int i;
 	int j;
-	static int player;
 
 	i = -1;
 	while(map[++i])
@@ -128,17 +127,21 @@ bool check_map(char **map)
 				exit_on_error("Error: invalid map character\n", 30);
 			if (ft_strchr("0NSEW", map[i][j]))
 			{
-				if (map[i][j] != '0' && player)
+				if (map[i][j] != '0' && data->player)
 					exit_on_error("Error: multiple players\n", 24);
 				else if (map[i][j] != '0')
-					player = 1;
+				{
+					data->player = map[i][j];
+					data->p_x = i + 1;
+					data->p_y = j + 1;
+				}
 				if(!check_borders(map, i, j))
 					exit_on_error("Error: invalid map borders\n", 27);
 			}
 		}
 	}
-	(!player) && (exit_on_error("Error: no player\n", 17), 1);
-	return (true);	
+	(!data->player) && (exit_on_error("Error: no player\n", 17), 1);
+	return (true);
 }
 
 t_map	*is_valid_map(char **argv, char *line)
@@ -172,7 +175,7 @@ t_map	*is_valid_map(char **argv, char *line)
 			free(tmp), 1);
 	}
 	map_data->map = ft_split(&map_data->height, one_line_map, '\n');
-	return (check_map(map_data->map), close(fd), map_data);
+	return (check_map(map_data->map, map_data), close(fd), map_data);
 }
 
 void print_map_data(t_map *map_data)
