@@ -1,5 +1,5 @@
-CC=cc
-CFLAGS=-Wall -Wextra -Werror #-g -fsanitize=address
+CC= cc
+CFLAGS=-Wall -Wextra -Werror
 GLFW = $(shell brew --prefix glfw)/lib
 
 HEAP_CONTROL = 	heap_control/heap_control.c\

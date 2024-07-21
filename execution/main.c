@@ -6,7 +6,7 @@
 /*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:09:29 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 04:40:15 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/21 05:27:32 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (exit_on_error("Error: invalid number of arguments\n", 35), 0);
-	map_data = is_valid_map(argv, NULL, NULL);
+	map_data = is_valid_map(argv, NULL, NULL, 0);
 	map_data->textures[0] = map_data->no;
 	map_data->textures[1] = map_data->so;
 	map_data->textures[2] = map_data->we;

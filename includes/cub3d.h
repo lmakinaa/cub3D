@@ -6,7 +6,7 @@
 /*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 03:31:35 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 04:44:38 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/21 05:33:23 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,8 @@ void		*ft_memset(void *str, int c, size_t len);
 char		*ft_strchr(const char *str, int c);
 int			vr(void);
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
-t_map		*is_valid_map(char **argv, char *line, char	*one_line_map);
+t_map		*is_valid_map(char **argv, char *line, char	*one_line_map,
+				int flag);
 int			check(char *line);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 void		get_path(char **path, char *line);
