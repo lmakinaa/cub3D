@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:43:23 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/30 17:41:23 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 02:31:38 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ void	put_sky_n_floor(t_cub *cub)
 	{
 		j = -1;
 		while (++j < S_W)
-			mlx_put_pixel(cub->img, j, i, 0xF5F5F5FF);
+			mlx_put_pixel(cub->img, j, i, cub->data->sky_c);
 	}
 	while (++i < S_H)
 	{
 		j = -1;
 		while (++j < S_W)
-			mlx_put_pixel(cub->img, j, i, 0xF5F005FF);
+			mlx_put_pixel(cub->img, j, i, cub->data->floor_c);
 	}
 }
