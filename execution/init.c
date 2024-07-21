@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:41:45 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 02:42:23 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 03:23:40 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_data	*init_data(t_map *map_data)
 {
 	t_data	*res;
-	int		i;
 
 	res = heap_control(M_ALLOC, sizeof(t_data), 0, 1);
 	res->map_2d = map_data->map;
@@ -24,9 +23,10 @@ t_data	*init_data(t_map *map_data)
 	res->p_y = map_data->p_x;
 	res->h_map = map_data->height;
 	res->w_map = map_data->width;
-	res->sky_c = get_rgba(map_data->C[0], map_data->C[1], map_data->C[2], 100);
-	res->floor_c = get_rgba(map_data->F[0], map_data->F[1],
-			map_data->F[2], 100);
+	res->sky_c = get_rgba(map_data->ceil[0], map_data->ceil[1],
+			map_data->ceil[2], 100);
+	res->floor_c = get_rgba(map_data->floor[0], map_data->floor[1],
+			map_data->floor[2], 100);
 	return (res);
 }
 

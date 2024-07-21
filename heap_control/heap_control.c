@@ -6,17 +6,17 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:05:10 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/21 14:48:45 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 03:13:12 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "heap_control.h"
+#include "heap_control.h"
 
 static void	del_from_session_part2(t_memsession *session, void *addr)
 {
 	t_memslot	*tmp;
 	t_memslot	*first_node;
-	
+
 	first_node = session->head;
 	while (first_node->next)
 	{

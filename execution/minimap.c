@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:05:18 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/20 21:51:47 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/21 03:16:17 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3d.h"
+#include "cub3d.h"
 
 void	draw_tile(t_cub *cub, int x, int y, int color)
 {
@@ -54,12 +54,13 @@ void	draw_minimap(t_cub *cub)
 		x = -1;
 		while (++x < cub->data->w_map)
 		{
-			if (map[y][x] == '0' || strchr("NSWE", map[y][x]))
+			if (map[y][x] == '0' || ft_strchr("NSWE", map[y][x]))
 				color = C_TRANSPARENT;
 			else
 				color = 0x000000FF;
 			draw_tile(cub, x * MINI_TILE_SIZE, y * MINI_TILE_SIZE, color);
 		}
 	}
-	draw_mini_player(cub, MINIMAP_SCALE * cub->p->x_pixel, MINIMAP_SCALE * cub->p->y_pixel, 0xFF0F00FF);
+	draw_mini_player(cub, 0.2 * cub->p->x_pixel,
+		0.2 * cub->p->y_pixel, 0xFF0F00FF);
 }

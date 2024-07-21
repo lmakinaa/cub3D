@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 02:36:23 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 03:26:48 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <unistd.h>
 # include <math.h>
 # include "MLX42.h"
-# include <string.h>
 # include <stdio.h>
 # include <fcntl.h>
 
@@ -36,15 +35,11 @@
 # define S_W 1000
 # define S_H 1000
 # define FOV 65
-# define TILE_SIZE 32.
-# define ROTATION_SPEED 2 * M_PI / 180
+# define TILE_SIZE 32
+# define ROT_SD 2
 # define PLAYER_SPEED 6
-# define N_RAYS S_W / 1
-
-# define MINIMAP_SCALE 0.2
-# define MINIMAP_W S_W * MINIMAP_SCALE
-# define MINIMAP_H S_H * MINIMAP_SCALE
-# define MINI_TILE_SIZE TILE_SIZE * MINIMAP_SCALE
+# define N_RAYS 1000
+# define MINI_TILE_SIZE 6.4
 
 typedef struct s_player
 {
@@ -70,6 +65,7 @@ typedef struct s_ray
 	double	h_y;
 	int		f;
 	int		for_norm;
+	float	wall_height;
 	float	tex_offset;
 }		t_ray;
 
@@ -97,16 +93,15 @@ typedef struct s_cub
 	t_player		*p;
 } 		t_cub;
 
-//------------------------------------------------------
 typedef struct s_map
 {
-	char    *NO;
-	char    *SO;
-	char    *WE;
-	char	*EA;
+	char    *no;
+	char    *so;
+	char    *we;
+	char	*ea;
 	char	*textures[4];
-	int     *F;
-	int     *C;
+	int     *floor;
+	int     *ceil;
 	char    **map;
 	char 	player;
 	int     p_x;
@@ -115,14 +110,14 @@ typedef struct s_map
 	int		width;
 } t_map;
 
-void 			cast_rays(t_cub *cub, int x, int y);
+void 			cast_rays(t_cub *cub);
 void			draw_minimap(t_cub *cub);
 t_data			*init_data(t_map *map_data);
 void			init_the_player(t_cub *cub);
 void			key_hooks(mlx_key_data_t k, void *m);
 void 			game_loop(void *m);
-void 			draw_line(t_cub *cub, int beginX, int beginY, int endX, int endY, int color);
-int 			get_rgba(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
+int 			get_rgba(unsigned char r, unsigned char g, unsigned char b,
+		unsigned char a);
 void			update_vars(t_cub *cub);
 double			map_angle(double angle);
 uint32_t		get_texture_pixel(mlx_image_t *texture, int x, int y);
@@ -153,8 +148,9 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memcpy(void *dst, const void *src, size_t len);
 void	*ft_memset(void *str, int c, size_t len);
 char	*ft_strchr(const char *str, int c);
+int		vr(void);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 t_map	*is_valid_map(char **argv, char *line);
-void	print_map_data(t_map *map_data);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

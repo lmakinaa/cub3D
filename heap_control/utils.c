@@ -6,11 +6,11 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:13:52 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/21 14:45:53 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 03:14:50 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "heap_control.h"
+#include "heap_control.h"
 
 void	exit_on_error(char *error, int len)
 {
@@ -31,18 +31,18 @@ void	session_init(t_memsession **session_ptr)
 	*session_ptr = session;
 }
 
-void    ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-        size_t  i;
-        char    *str;
+	size_t	i;
+	char	*str;
 
-        i = 0;
-        str = s;
-        if (n == 0)
-                return ;
-        while (i < n)
-        {
-                str[i] = '\0';
-                i++;
-        }
+	i = 0;
+	str = s;
+	if (n == 0)
+		return ;
+	while (i < n)
+	{
+		str[i] = '\0';
+		i++;
+	}
 }
