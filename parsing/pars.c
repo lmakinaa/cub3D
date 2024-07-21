@@ -6,7 +6,7 @@
 /*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:33:56 by miguiji           #+#    #+#             */
-/*   Updated: 2024/07/21 04:43:37 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/21 05:32:09 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int	for_norminette(t_map *map_data, char *line, int fd)
 	return (0);
 }
 
-t_map	*is_valid_map(char **argv, char *line, char	*one_line_map)
+t_map	*is_valid_map(char **argv, char *line, char	*one_line_map, int flag)
 {
 	t_map	*map_data;
 	int		fd;
@@ -92,8 +92,10 @@ t_map	*is_valid_map(char **argv, char *line, char	*one_line_map)
 			continue ;
 		if (ft_strlen(line) - 1 > map_data->width)
 			map_data->width = ft_strlen(line) - 1;
-		(1) && (tmp = one_line_map, one_line_map = ft_strjoin(tmp, line),
-			heap_control(M_DEL, 0, tmp, 0), vr());
+		(1) && check(line) && (flag = 1);
+		if (line[0] == '\n' && flag && !close(fd))
+			exit_on_error("Error: invalid map parameters new line \n", 40);
+		(1) && (tmp = one_line_map, one_line_map = ft_strjoin(tmp, line));
 	}
 	map_data->map = ft_split(&map_data->height, one_line_map, '\n');
 	return (check_map(map_data->map, map_data, -1, -1), close(fd), map_data);
