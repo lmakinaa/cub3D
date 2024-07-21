@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 23:11:48 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 02:12:43 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 02:25:58 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void clean_exit(t_cub *cub)
 {
+	clean_textures(cub);
 	mlx_terminate(cub->mlx_p);
 	heap_control(M_CLEAN, 0, 0, 0);
 	exit(EXIT_SUCCESS);

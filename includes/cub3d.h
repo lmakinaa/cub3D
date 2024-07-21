@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 02:18:49 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 02:26:11 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ void			render_obstacles(t_cub *cub, int col);
 void			put_sky_n_floor(t_cub *cub);
 int				is_wall(t_cub *cub, double start_y, double start_x);
 void			clean_exit(t_cub *cub);
+void 			clean_textures(t_cub *cub);
 
 //------------------------------------------------------
 
