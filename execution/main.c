@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:09:29 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 05:27:32 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/21 05:36:28 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	start_the_game(t_data *data)
 	cub = data->cub;
 	cub->data = data;
 	cub->p = heap_control(M_ALLOC, sizeof(t_player), 0, 1);
+	adjust_p_angle(cub);
 	cub->ray = heap_control(M_ALLOC, sizeof(t_ray), 0, 1);
 	cub->mlx_p = mlx_init(S_W, S_H, "cub3d", true);
 	if (!cub->mlx_p)

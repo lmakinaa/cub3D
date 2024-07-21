@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:17:40 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 04:18:52 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 05:17:25 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	is_wall(t_cub *cub, double start_y, double start_x)
 		return (1);
 	x = (start_x) / TILE_SIZE;
 	y = (start_y) / TILE_SIZE;
-	if (y >= cub->data->h_map || x >= cub->data->w_map)
+	if (y >= cub->data->h_map || x >= ft_strlen(cub->data->map_2d[y]))
 		return (1);
 	if (cub->data->map_2d[y][x] == '1')
 		return (1);

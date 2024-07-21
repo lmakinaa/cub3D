@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:05:18 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 03:16:17 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 05:13:22 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	draw_minimap(t_cub *cub)
 	while (++y < cub->data->h_map)
 	{
 		x = -1;
-		while (++x < cub->data->w_map)
+		while (map[y][++x])
 		{
 			if (map[y][x] == '0' || ft_strchr("NSWE", map[y][x]))
 				color = C_TRANSPARENT;

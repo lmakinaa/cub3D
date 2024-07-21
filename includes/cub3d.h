@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 03:31:35 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 05:33:23 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/21 05:36:07 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct s_cub
 	t_ray			*ray;
 	t_data			*data;
 	t_player		*p;
+	struct s_map	*parsing;
 }	t_cub;
 
 typedef struct s_map
@@ -128,6 +129,7 @@ int			is_wall(t_cub *cub, double start_y, double start_x);
 void		clean_exit(t_cub *cub);
 void		clean_textures(t_cub *cub);
 void		get_angle_facing(t_ray *ray);
+void		adjust_p_angle(t_cub *cub);
 
 char		*ft_strtrim(char *str, char *set);
 int			ft_isdigit(int c);
