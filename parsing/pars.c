@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:33:56 by miguiji           #+#    #+#             */
-/*   Updated: 2024/07/21 03:42:00 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 03:45:51 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	get_path(char **path, char *line)
 {
-	int		i = 2;
+	int		i;
 	char	*trimed;
 
+	i = 2;
 	trimed = ft_strtrim(line + i, " \t\n\v\f\r");
 	if (!trimed || ft_strlen(trimed) > 1024)
 		*path = NULL;
@@ -38,10 +39,11 @@ bool	range_checker(int *nbrs, int size)
 	return (true);
 }
 
-int		check(char *line)
+int	check(char *line)
 {
-	int	i = 0;
+	int	i;
 
+	i = 0;
 	while (line[i])
 	{
 		if ((line[i] >= 9 && line[i] <= 13) || line[i] == 32)
@@ -54,12 +56,14 @@ int		check(char *line)
 
 void	get_colors(int **color, char *line)
 {
-	int		i = 1;
+	int		i;
 	int		start;
-	int		flag = 0;
+	int		flag;
 	char	**array;
 	int		*nbr;
 
+	i = 1;
+	flag = 0;
 	while (line[i] && ((line[i] >= 9 && line[i] <= 13) || line[i] == 32))
 		i++;
 	start = i;
@@ -164,8 +168,9 @@ t_map	*is_valid_map(char **argv, char *line)
 	t_map	*map_data;
 	int		fd;
 	char	*tmp;
-	char	*one_line_map = NULL;
+	char	*one_line_map;
 
+	one_line_map = NULL;
 	if (ft_strnstr(argv[1] + (ft_strlen(argv[1]) - 4), ".cub", 4) == NULL)
 		exit_on_error("Error: invalid file extension\n", 30);
 	map_data = heap_control(1, sizeof(t_map), NULL, 1);

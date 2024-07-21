@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:17:40 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 03:04:36 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 03:43:13 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,7 @@ double	h_intersec_distance(t_cub *cub, double ray_angle)
 	}
 	d = sqrt(pow(start_x - cub->p->x_pixel, 2)
 			+ pow(start_y - cub->p->y_pixel, 2));
-	cub->ray->h_x = start_x;
-	cub->ray->h_y = start_y;
-	return (d);
+	return (cub->ray->h_x = start_x, cub->ray->h_y = start_y, d);
 }
 
 // first vertical intersec:
@@ -145,35 +143,28 @@ double	v_interse_distance(t_cub *cub, double ray_angle)
 	}
 	d = sqrt(pow(start_x - cub->p->x_pixel, 2)
 			+ pow(start_y - cub->p->y_pixel, 2));
-	cub->ray->v_x = start_x;
-	cub->ray->v_y = start_y;
-	return (d);
+	return (cub->ray->v_x = start_x, cub->ray->v_y = start_y, d);
 }
 
-void	cast_rays(t_cub *cub)
+void	cast_rays(t_cub *cub, int col, double h_d, double h_d)
 {
-	double	h_d;
 	double	v_d;
-	int		col;
 
 	cub->ray->ray_angle = cub->p->angle - (cub->p->fov_rd / 2);
 	get_angle_facing(cub->ray);
-	col = -1;
 	while (++col < N_RAYS)
 	{
 		h_d = h_intersec_distance(cub, map_angle(cub->ray->ray_angle));
 		v_d = v_interse_distance(cub, map_angle(cub->ray->ray_angle));
 		if (v_d <= h_d)
 		{
-			cub->ray->f = 0;
-			cub->ray->distance_to_wall = v_d;
+			(1) && (cub->ray->f = 0) && (cub->ray->distance_to_wall = v_d)
 			cub->ray->tex_offset = (cub->ray->v_y / TILE_SIZE)
 				- ((int)(cub->ray->v_y / TILE_SIZE));
 		}
 		else
 		{
-			cub->ray->f = 1;
-			cub->ray->distance_to_wall = h_d;
+			(1) && (cub->ray->f = 1) && (cub->ray->distance_to_wall = h_d)
 			cub->ray->tex_offset = (cub->ray->h_x / TILE_SIZE)
 				- ((int)(cub->ray->h_x / TILE_SIZE));
 		}
