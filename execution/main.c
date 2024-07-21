@@ -6,16 +6,20 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:09:29 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 02:15:37 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 02:25:21 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "cub3d.h"
 
-//void clean_textures(t_cub *cub)
-//{
+void clean_textures(t_cub *cub)
+{
+	int i;
 	
-//}
+	i = -1;
+	while (++i < 4)
+		mlx_delete_image(cub->mlx_p, cub->data->textures[i]);
+}
 
 void load_textures(t_data *d)
 {
@@ -30,7 +34,8 @@ void load_textures(t_data *d)
 			clean_exit(d->cub);
 		d->textures[i] = mlx_texture_to_image(d->cub->mlx_p, tmp);	
 		if (!d->textures[i])
-       		clean_exit(d->cub);	
+       		clean_exit(d->cub);
+		mlx_delete_texture(tmp);
 	}
 }
 
