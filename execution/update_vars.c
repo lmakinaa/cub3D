@@ -6,11 +6,23 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 01:23:44 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 03:37:18 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 04:19:02 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	get_angle_facing(t_ray *ray)
+{
+	if (ray->ray_angle > 0 && ray->ray_angle < M_PI)
+		ray->facing_u_d = 1;
+	else
+		ray->facing_u_d = 0;
+	if (ray->ray_angle < M_PI / 2 || ray->ray_angle > 1.5 * M_PI)
+		ray->facing_l_r = 1;
+	else
+		ray->facing_l_r = 0;
+}
 
 int	ix_wall(t_cub *cub, double start_y, double start_x)
 {

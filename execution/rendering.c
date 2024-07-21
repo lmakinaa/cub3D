@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 18:18:39 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 04:12:30 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 04:18:25 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	put_wall(t_cub *cub, int s_y, int e_y, int col)
 void	render_obstacles(t_cub *cub, int col)
 {
 	double	proj_plane_dist;
-	//double	wall_height;
 	double	start_p;
 	double	end_p;
 

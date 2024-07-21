@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 03:31:35 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 04:16:03 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 04:19:46 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,8 @@ void		put_sky_n_floor(t_cub *cub);
 int			is_wall(t_cub *cub, double start_y, double start_x);
 void		clean_exit(t_cub *cub);
 void		clean_textures(t_cub *cub);
+void		get_angle_facing(t_ray *ray);
+
 char		*ft_strtrim(char *str, char *set);
 int			ft_isdigit(int c);
 bool		range_checker(int *nbrs, int size);
