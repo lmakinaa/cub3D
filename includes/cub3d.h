@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 03:31:35 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 03:37:18 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 04:16:03 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ typedef struct s_map
 	int		width;
 }	t_map;
 
-void		cast_rays(t_cub *cub);
+void		cast_rays(t_cub *cub, double h_d, double v_d, int col);
 void		draw_minimap(t_cub *cub);
 t_data		*init_data(t_map *map_data);
 void		init_the_player(t_cub *cub);
