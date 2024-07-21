@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:01:07 by miguiji           #+#    #+#             */
-/*   Updated: 2024/07/20 13:26:48 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 03:36:47 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static int	allocation(char **buffer)
 		return (1);
 	}
 	i = 0;
-	ptr = (char *)heap_control(M_ALLOC, BUFFER_SIZE + ft_strlen(*buffer) + 1, 0, 0);
+	ptr = (char *)heap_control(M_ALLOC, BUFFER_SIZE
+			+ ft_strlen(*buffer) + 1, 0, 0);
 	if (!ptr)
 		return (heap_control(M_DEL, 0, *buffer, 0), *buffer = NULL, 0);
 	while ((*buffer)[i])
@@ -57,9 +58,9 @@ static char	*return_line(char **buffer, size_t len)
 	{
 		new_buffer = ft_substr((const char *)*buffer, len, i - len);
 		if (!new_buffer)
-			return (heap_control(M_DEL, 0, str, 0), heap_control(M_DEL, 0, *buffer, 0), *buffer = NULL, NULL);
-		heap_control(M_DEL, 0, *buffer, 0);
-		*buffer = new_buffer;
+			return (heap_control(M_DEL, 0, str, 0), heap_control(M_DEL, 0,
+					*buffer, 0), *buffer = NULL, NULL);
+		(1) && (heap_control(M_DEL, 0, *buffer, 0), *buffer = new_buffer);
 	}
 	else
 	{

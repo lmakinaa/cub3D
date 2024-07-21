@@ -6,12 +6,12 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 10:57:53 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/21 14:46:02 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 03:34:39 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEAD_CONTROL_H
-# define HEAD_CONTROL_H
+#ifndef HEAP_CONTROL_H
+# define HEAP_CONTROL_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -38,7 +38,7 @@ typedef struct s_heapslots
 
 void	exit_on_error(char *error, int len);
 void	session_init(t_memsession **session_ptr);
-void    ft_bzero(void *s, size_t n);
+void	ft_bzero(void *s, size_t n);
 void	*heap_control(int mode, size_t size, void *addr, int erase);
 
-# endif
+#endif
