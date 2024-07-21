@@ -6,63 +6,68 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:33:56 by miguiji           #+#    #+#             */
-/*   Updated: 2024/07/21 03:28:00 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 03:42:00 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void get_path(char **path, char *line)
+void	get_path(char **path, char *line)
 {
-	int i = 2;
-	char *trimed;
+	int		i = 2;
+	char	*trimed;
+
 	trimed = ft_strtrim(line + i, " \t\n\v\f\r");
-	if(!trimed || ft_strlen(trimed) > 1024)
+	if (!trimed || ft_strlen(trimed) > 1024)
 		*path = NULL;
 	else
 		*path = trimed;
 }
 
-//  F 220,100,0
-bool range_checker(int *nbrs, int size)
+bool	range_checker(int *nbrs, int size)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i <= size)
+	while (i <= size)
 	{
-		if(nbrs[i] > 255 || nbrs[i] < 0)
+		if (nbrs[i] > 255 || nbrs[i] < 0)
 			exit_on_error("Error : color range invalid !\n", 30);
 		i++;
 	}
 	return (true);
 }
-int check(char *line)
+
+int		check(char *line)
 {
-	int i = 0;
-	while(line[i])
+	int	i = 0;
+
+	while (line[i])
 	{
-		if ((line[i] >= 9 && line[i] <= 13)  || line[i] == 32)
+		if ((line[i] >= 9 && line[i] <= 13) || line[i] == 32)
 			i++;
 		else
 			return (1);
 	}
 	return (0);
 }
-void get_colors(int **color, char *line)
+
+void	get_colors(int **color, char *line)
 {
-	int i = 1;
-	int start;
-	int flag = 0;
-	char **array;
-	while(line[i] && ((line[i] >= 9 && line[i] <= 13) || line[i] == 32))
+	int		i = 1;
+	int		start;
+	int		flag = 0;
+	char	**array;
+	int		*nbr;
+
+	while (line[i] && ((line[i] >= 9 && line[i] <= 13) || line[i] == 32))
 		i++;
 	start = i;
-	while(line[i])
+	while (line[i])
 	{
-		while(ft_isdigit(line[i]))
+		while (ft_isdigit(line[i]))
 			i++;
-		if(line[i] == ',' && ft_isdigit(line[i - 1]))
+		if (line[i] == ',' && ft_isdigit(line[i - 1]))
 			flag++;
 		else if (flag != 2 || check(&line[i]))
 			return ;
@@ -72,42 +77,44 @@ void get_colors(int **color, char *line)
 	if (++flag == 3)
 	{
 		array = ft_split(NULL, line + start, ',');
-		int *nbr = heap_control(M_ALLOC, sizeof(int) * 3, 0, 1);
+		nbr = heap_control(M_ALLOC, sizeof(int) * 3, 0, 1);
 		while (flag--)
 		{
 			nbr[2 - flag] = atoi(array[2 - flag]);
 		}
-		if(range_checker(nbr, sizeof(nbr)/4))
+		if (range_checker(nbr, sizeof(nbr) / 4))
 			(*color) = nbr;
 	}
 }
 
 bool	get_params(char *line, t_map *map_data)
 {
-	if(!ft_strncmp(line,"NO ",3) && !map_data->no)
-		return(get_path(&map_data->no, line), true);
-	else if(!ft_strncmp(line,"SO ",3) && !map_data->so)
-		return(get_path(&map_data->so, line), true);
-	else if(!ft_strncmp(line,"WE ",3) && !map_data->we)
-		return(get_path(&map_data->we, line), true);
-	else if(!ft_strncmp(line,"EA ",3) && !map_data->ea)
-		return(get_path(&map_data->ea, line), true);
-	else if(!ft_strncmp(line,"F ",2) && !map_data->floor)
-		return(get_colors(&(map_data->floor), line), true);
-	else if(!ft_strncmp(line,"C ",2) && !map_data->ceil)
-		return(get_colors(&(map_data->ceil), line), true);
+	if (!ft_strncmp(line, "NO ", 3) && !map_data->no)
+		return (get_path(&map_data->no, line), true);
+	else if (!ft_strncmp(line, "SO ", 3) && !map_data->so)
+		return (get_path(&map_data->so, line), true);
+	else if (!ft_strncmp(line, "WE ", 3) && !map_data->we)
+		return (get_path(&map_data->we, line), true);
+	else if (!ft_strncmp(line, "EA ", 3) && !map_data->ea)
+		return (get_path(&map_data->ea, line), true);
+	else if (!ft_strncmp(line, "F ", 2) && !map_data->floor)
+		return (get_colors(&(map_data->floor), line), true);
+	else if (!ft_strncmp(line, "C ", 2) && !map_data->ceil)
+		return (get_colors(&(map_data->ceil), line), true);
 	else if (*line == '\n')
 		return (true);
-	return(false);
+	return (false);
 }
-bool check_params(t_map *map_data)
+
+bool	check_params(t_map *map_data)
 {
-	if (!map_data->no || !map_data->so || !map_data->we||\
+	if (!map_data->no || !map_data->so || !map_data->we || \
 		!map_data->ea || !map_data->floor || !map_data->ceil)
 		return (false);
 	return (true);
 }
-bool	check_borders(char **map,int i, int j)
+
+bool	check_borders(char **map, int i, int j)
 {
 	if (i - 1 < 0 || !ft_strchr("01NSEW", map[i - 1][j]))
 		return (false);
@@ -120,16 +127,16 @@ bool	check_borders(char **map,int i, int j)
 	return (true);
 }
 
-bool check_map(char **map, t_map *data)
+bool	check_map(char **map, t_map *data)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = -1;
-	while(map[++i])
+	while (map[++i])
 	{
 		j = -1;
-		while(map[i][++j])
+		while (map[i][++j])
 		{
 			if (!ft_strchr(" 01NSEW", map[i][j]))
 				exit_on_error("Error: invalid map character\n", 30);
@@ -143,7 +150,7 @@ bool check_map(char **map, t_map *data)
 					data->p_x = i;
 					data->p_y = j;
 				}
-				if(!check_borders(map, i, j))
+				if (!check_borders(map, i, j))
 					exit_on_error("Error: invalid map borders\n", 27);
 			}
 		}
@@ -159,7 +166,7 @@ t_map	*is_valid_map(char **argv, char *line)
 	char	*tmp;
 	char	*one_line_map = NULL;
 
-    if (ft_strnstr(argv[1] + (ft_strlen(argv[1]) - 4), ".cub", 4) == NULL)
+	if (ft_strnstr(argv[1] + (ft_strlen(argv[1]) - 4), ".cub", 4) == NULL)
 		exit_on_error("Error: invalid file extension\n", 30);
 	map_data = heap_control(1, sizeof(t_map), NULL, 1);
 	map_data->width = 0;
@@ -174,7 +181,7 @@ t_map	*is_valid_map(char **argv, char *line)
 			break ;
 		if (!check_params(map_data))
 		{
-			if(!get_params(line, map_data))
+			if (!get_params(line, map_data))
 				exit_on_error("Error: invalid map parameters\n", 30);
 			continue ;
 		}
