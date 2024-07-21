@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 02:29:24 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 02:36:23 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_ray
 	double	h_x;
 	double	h_y;
 	int		f;
+	int		for_norm;
 	float	tex_offset;
 }		t_ray;
 
