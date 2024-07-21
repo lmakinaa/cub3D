@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:09:29 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 03:25:50 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 04:16:11 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	game_loop(void *m)
 	cub = m;
 	update_vars(cub);
 	put_sky_n_floor(cub);
-	cast_rays(cub);
+	cast_rays(cub, 0, 0, -1);
 	draw_minimap(cub);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:17:40 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 04:12:40 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 04:15:50 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,30 +146,23 @@ double	v_interse_distance(t_cub *cub, double ray_angle)
 	return (cub->ray->v_x = start_x, cub->ray->v_y = start_y, d);
 }
 
-void    cast_rays(t_cub *cub)
+void    cast_rays(t_cub *cub, double h_d, double v_d, int col)
 {
-    double    h_d;
-    double    v_d;
-    int        col;
-
     cub->ray->ray_angle = cub->p->angle - (cub->p->fov_rd / 2);
-    get_angle_facing(cub->ray);
-    col = -1;
+    (1) && (get_angle_facing(cub->ray), col = -1);
     while (++col < N_RAYS)
     {
         h_d = h_intersec_distance(cub, map_angle(cub->ray->ray_angle));
         v_d = v_interse_distance(cub, map_angle(cub->ray->ray_angle));
         if (v_d <= h_d)
         {
-            cub->ray->f = 0;
-            cub->ray->distance_to_wall = v_d;
+            (1) && (cub->ray->f = 0, cub->ray->distance_to_wall = v_d);
             cub->ray->tex_offset = (cub->ray->v_y / TILE_SIZE)
                 - ((int)(cub->ray->v_y / TILE_SIZE));
         }
         else
         {
-            cub->ray->f = 1;
-            cub->ray->distance_to_wall = h_d;
+            (1) && (cub->ray->f = 1, cub->ray->distance_to_wall = h_d);
             cub->ray->tex_offset = (cub->ray->h_x / TILE_SIZE)
                 - ((int)(cub->ray->h_x / TILE_SIZE));
         }
