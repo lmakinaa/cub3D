@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:41:45 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/20 21:20:06 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/21 02:32:31 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ t_data	*init_data(t_map *map_data)
 	res->p_y = map_data->p_x;
 	res->h_map = map_data->height;
 	res->w_map = map_data->width;
+	res->sky_c = get_rgba(map_data->C[0], map_data->C[1], map_data->C[2], 100);
+	res->floor_c = get_rgba(map_data->F[0], map_data->F[1], map_data->F[2], 100);
 	return (res);
 }
 
