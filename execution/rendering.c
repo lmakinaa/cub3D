@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 18:18:39 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 03:05:36 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 04:12:30 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	put_wall(t_cub *cub, int s_y, int e_y, int col)
 void	render_obstacles(t_cub *cub, int col)
 {
 	double	proj_plane_dist;
-	double	wall_height;
+	//double	wall_height;
 	double	start_p;
 	double	end_p;
 
@@ -70,10 +70,10 @@ void	render_obstacles(t_cub *cub, int col)
 		return ;
 	else
 	{
-		wall_height = (TILE_SIZE / cub->ray->distance_to_wall)
+		cub->ray->wall_height = (TILE_SIZE / cub->ray->distance_to_wall)
 			* proj_plane_dist;
-		start_p = (S_H / 2) - (wall_height / 2);
-		end_p = (S_H / 2) + (wall_height / 2);
+		start_p = (S_H / 2) - (cub->ray->wall_height / 2);
+		end_p = (S_H / 2) + (cub->ray->wall_height / 2);
 		if (end_p > S_H)
 			end_p = S_H;
 		put_wall(cub, start_p, end_p, col);
