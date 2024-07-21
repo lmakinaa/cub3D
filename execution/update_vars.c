@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 01:23:44 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 03:18:34 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 03:37:18 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	update_vars(t_cub *cub)
 
 	tmp_x = 0;
 	tmp_y = 0;
-	cub->p->angle = map_angle(cub->p->angle + cub->p->rot * (ROT_SD * M_PI / 180));
+	cub->p->angle = map_angle(cub->p->angle + cub->p->rot * (R_S * M_PI / 180));
 	step = PLAYER_SPEED;
 	if (cub->p->l_r == 1)
 	{

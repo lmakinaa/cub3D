@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 03:30:04 by ijaija           ###   ########.fr       */
+/*   Created: 2024/07/21 03:31:35 by ijaija            #+#    #+#             */
+/*   Updated: 2024/07/21 03:37:18 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define S_H 1000
 # define FOV 65
 # define TILE_SIZE 32
-# define ROT_SD 2
+# define R_S 2
 # define PLAYER_SPEED 6
 # define N_RAYS 1000
 # define MINI_TILE_SIZE 6.4
@@ -50,7 +50,7 @@ typedef struct s_player
 	int		rot;
 	int		l_r;
 	int		u_d;
-}		t_player;
+}	t_player;
 
 typedef struct s_ray
 {
@@ -67,7 +67,7 @@ typedef struct s_ray
 	int		for_norm;
 	float	wall_height;
 	float	tex_offset;
-}		t_ray;
+}	t_ray;
 
 typedef struct s_data
 {
@@ -76,12 +76,12 @@ typedef struct s_data
 	int				p_y;
 	int				w_map;
 	int				h_map;
-	mlx_image_t 	*textures[4];
-	char 			**texture_paths;
+	mlx_image_t		*textures[4];
+	char			**texture_paths;
 	int				sky_c;
 	int				floor_c;
 	struct s_cub	*cub;
-}		t_data;
+}	t_data;
 
 typedef struct s_cub
 {
@@ -91,66 +91,63 @@ typedef struct s_cub
 	t_ray			*ray;
 	t_data			*data;
 	t_player		*p;
-} 		t_cub;
+}	t_cub;
 
 typedef struct s_map
 {
-	char    *no;
-	char    *so;
-	char    *we;
+	char	*no;
+	char	*so;
+	char	*we;
 	char	*ea;
 	char	*textures[4];
-	int     *floor;
-	int     *ceil;
-	char    **map;
-	char 	player;
-	int     p_x;
-	int 	p_y;		
+	int		*floor;
+	int		*ceil;
+	char	**map;
+	char	player;
+	int		p_x;
+	int		p_y;
 	int		height;
 	int		width;
-} t_map;
+}	t_map;
 
-void 			cast_rays(t_cub *cub);
-void			draw_minimap(t_cub *cub);
-t_data			*init_data(t_map *map_data);
-void			init_the_player(t_cub *cub);
-void			key_hooks(mlx_key_data_t k, void *m);
-void 			game_loop(void *m);
-int 			get_rgba(unsigned char r, unsigned char g, unsigned char b,
-		unsigned char a);
-void			update_vars(t_cub *cub);
-double			map_angle(double angle);
-uint32_t		get_texture_pixel(mlx_image_t *texture, int x, int y);
-void			render_obstacles(t_cub *cub, int col);
-void			put_sky_n_floor(t_cub *cub);
-int				is_wall(t_cub *cub, double start_y, double start_x);
-void			clean_exit(t_cub *cub);
-void 			clean_textures(t_cub *cub);
-
-//------------------------------------------------------
-
-char	*ft_strtrim(char *str, char *set);
-int		ft_isdigit(int c);
-bool	range_checker(int *nbrs, int size);
-char	*get_next_line(int fd);
-void	*ft_memcpy(void *dst, const void *src, size_t len);
-void	*ft_memset(void *str, int c, size_t len);
-int     ft_atoi(const char *str);
-int     ft_isdigit(int c);
-int     ft_isalnum(int c);
-int     ft_isalpha(int c);
-char	**ft_split(int *height, char *original, char c);
-char    *ft_strdup(const char *str);
-char    *ft_strjoin(const char *s1, const char *s2);
-int     ft_strlen(const char *s);
-char    *ft_substr(const char *str, int start, int len);
-void	*ft_memmove(void *dst, const void *src, size_t len);
-void	*ft_memcpy(void *dst, const void *src, size_t len);
-void	*ft_memset(void *str, int c, size_t len);
-char	*ft_strchr(const char *str, int c);
-int		vr(void);
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-t_map	*is_valid_map(char **argv, char *line);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
+void		cast_rays(t_cub *cub);
+void		draw_minimap(t_cub *cub);
+t_data		*init_data(t_map *map_data);
+void		init_the_player(t_cub *cub);
+void		key_hooks(mlx_key_data_t k, void *m);
+void		game_loop(void *m);
+int			get_rgba(unsigned char r, unsigned char g,
+				unsigned char b, unsigned char a);
+void		update_vars(t_cub *cub);
+double		map_angle(double angle);
+uint32_t	get_texture_pixel(mlx_image_t *texture, int x, int y);
+void		render_obstacles(t_cub *cub, int col);
+void		put_sky_n_floor(t_cub *cub);
+int			is_wall(t_cub *cub, double start_y, double start_x);
+void		clean_exit(t_cub *cub);
+void		clean_textures(t_cub *cub);
+char		*ft_strtrim(char *str, char *set);
+int			ft_isdigit(int c);
+bool		range_checker(int *nbrs, int size);
+char		*get_next_line(int fd);
+void		*ft_memcpy(void *dst, const void *src, size_t len);
+void		*ft_memset(void *str, int c, size_t len);
+int			ft_atoi(const char *str);
+int			ft_isdigit(int c);
+int			ft_isalnum(int c);
+int			ft_isalpha(int c);
+char		**ft_split(int *height, char *original, char c);
+char		*ft_strdup(const char *str);
+char		*ft_strjoin(const char *s1, const char *s2);
+int			ft_strlen(const char *s);
+char		*ft_substr(const char *str, int start, int len);
+void		*ft_memmove(void *dst, const void *src, size_t len);
+void		*ft_memcpy(void *dst, const void *src, size_t len);
+void		*ft_memset(void *str, int c, size_t len);
+char		*ft_strchr(const char *str, int c);
+int			vr(void);
+char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
+t_map		*is_valid_map(char **argv, char *line);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif
