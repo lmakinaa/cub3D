@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 01:23:44 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 01:45:07 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 03:18:34 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,24 @@ int	ix_wall(t_cub *cub, double start_y, double start_x)
 {
 	int	y;
 	int	x;
- 
- if (start_y < 0 || start_x < 0)
+
+	if (start_y < 0 || start_x < 0)
 		return (1);
 	x = (start_x) / TILE_SIZE;
 	y = (start_y) / TILE_SIZE;
-
-
-if (y >= cub->data->h_map || x >= cub->data->w_map)
+	if (y >= cub->data->h_map || x >= cub->data->w_map)
 		return (1);
 	if (cub->data->map_2d[y][x] == '1')
 		return (1);
 	if (cub->ray->distance_to_wall == 0)
 		return (1);
-	// x = (start_x + TILE_SIZE/4) / TILE_SIZE;
-	// y = (start_y + TILE_SIZE/4) / TILE_SIZE;
-	// if (y >= cub->data->h_map ||  x >= cub->data->w_map)
-	// 	return (1);
-	// if (cub->data->map_2d[y][x] == '1')
-	// 	return (1);
 	return (0);
 }
+
 void	p_movement(t_cub *mlx, double move_x, double move_y)
 {
-	int		new_x;
-	int		new_y;
+	int	new_x;
+	int	new_y;
 
 	new_y = mlx->p->y_pixel + (move_y * 5);
 	new_x = mlx->p->x_pixel + (move_x * 5);
@@ -57,7 +50,9 @@ void	update_vars(t_cub *cub)
 	double	tmp_y;
 	double	step;
 
-	cub->p->angle = map_angle(cub->p->angle + cub->p->rot * ROTATION_SPEED);
+	tmp_x = 0;
+	tmp_y = 0;
+	cub->p->angle = map_angle(cub->p->angle + cub->p->rot * (ROT_SD * M_PI / 180));
 	step = PLAYER_SPEED;
 	if (cub->p->l_r == 1)
 	{

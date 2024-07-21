@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:09:29 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 02:51:23 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 03:25:50 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,17 @@ void	load_textures(t_data *d)
 void	game_loop(void *m)
 {
 	t_cub	*cub;
-	int		tmp1;
-	int		tmp2;
 
 	cub = m;
 	update_vars(cub);
 	put_sky_n_floor(cub);
-	cast_rays(cub, 0, 0);
+	cast_rays(cub);
 	draw_minimap(cub);
 }
 
 void	start_the_game(t_data *data)
 {
 	t_cub			*cub;
-	mlx_texture_t	*tex;
 
 	cub = data->cub;
 	cub->data = data;
@@ -86,11 +83,10 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (exit_on_error("Error: invalid number of arguments\n", 35), 0);
 	map_data = is_valid_map(argv, NULL);
-	map_data->textures[0] = map_data->NO;
-	map_data->textures[1] = map_data->SO;
-	map_data->textures[2] = map_data->WE;
-	map_data->textures[3] = map_data->EA;
-	print_map_data(map_data);
+	map_data->textures[0] = map_data->no;
+	map_data->textures[1] = map_data->so;
+	map_data->textures[2] = map_data->we;
+	map_data->textures[3] = map_data->ea;
 	data = init_data(map_data);
 	data->texture_paths = map_data->textures;
 	start_the_game(data);

@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:17:40 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 02:42:14 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 03:04:36 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ double	v_interse_distance(t_cub *cub, double ray_angle)
 	return (d);
 }
 
-void	cast_rays(t_cub *cub, int x, int y)
+void	cast_rays(t_cub *cub)
 {
 	double	h_d;
 	double	v_d;

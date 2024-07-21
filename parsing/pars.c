@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:33:56 by miguiji           #+#    #+#             */
-/*   Updated: 2024/07/20 21:11:07 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/21 03:25:40 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,26 +76,26 @@ void get_colors(int **color, char *line)
 
 bool	get_params(char *line, t_map *map_data)
 {
-	if(!strncmp(line,"NO ",3) && !map_data->NO)
-		return(get_path(&map_data->NO, line), true);
-	else if(!strncmp(line,"SO ",3) && !map_data->SO)
-		return(get_path(&map_data->SO, line), true);
-	else if(!strncmp(line,"WE ",3) && !map_data->WE)
-		return(get_path(&map_data->WE, line), true);
-	else if(!strncmp(line,"EA ",3) && !map_data->EA)
-		return(get_path(&map_data->EA, line), true);
-	else if(!strncmp(line,"F ",2) && !map_data->F)
-		return(get_colors(&(map_data->F), line), true);
-	else if(!strncmp(line,"C ",2) && !map_data->C)
-		return(get_colors(&(map_data->C), line), true);
+	if(!ft_strncmp(line,"NO ",3) && !map_data->no)
+		return(get_path(&map_data->no, line), true);
+	else if(!ft_strncmp(line,"SO ",3) && !map_data->so)
+		return(get_path(&map_data->so, line), true);
+	else if(!ft_strncmp(line,"WE ",3) && !map_data->we)
+		return(get_path(&map_data->we, line), true);
+	else if(!ft_strncmp(line,"EA ",3) && !map_data->ea)
+		return(get_path(&map_data->ea, line), true);
+	else if(!ft_strncmp(line,"F ",2) && !map_data->floor)
+		return(get_colors(&(map_data->floor), line), true);
+	else if(!ft_strncmp(line,"C ",2) && !map_data->ceil)
+		return(get_colors(&(map_data->ceil), line), true);
 	else if (*line == '\n')
 		return (true);
 	return(false);
 }
 bool check_params(t_map *map_data)
 {
-	if (!map_data->NO || !map_data->SO || !map_data->WE||\
-		!map_data->EA || !map_data->F || !map_data->C)
+	if (!map_data->no || !map_data->so || !map_data->we||\
+		!map_data->ea || !map_data->floor || !map_data->ceil)
 		return (false);
 	return (true);
 }
@@ -140,7 +140,7 @@ bool check_map(char **map, t_map *data)
 			}
 		}
 	}
-	(!data->player) && (exit_on_error("Error: no player\n", 17), 1);
+	(!data->player) && (exit_on_error("Error: no player\n", 17), vr());
 	return (true);
 }
 
@@ -170,24 +170,11 @@ t_map	*is_valid_map(char **argv, char *line)
 				exit_on_error("Error: invalid map parameters\n", 30);
 			continue ;
 		}
-		if (strlen(line) - 1 > map_data->width)
-			map_data->width = strlen(line) - 1;
+		if (ft_strlen(line) - 1 > map_data->width)
+			map_data->width = ft_strlen(line) - 1;
 		(1) && (tmp = one_line_map, one_line_map = ft_strjoin(tmp, line),
-			heap_control(M_DEL, 0, tmp, 0), 1);
+			heap_control(M_DEL, 0, tmp, 0), vr());
 	}
 	map_data->map = ft_split(&map_data->height, one_line_map, '\n');
 	return (check_map(map_data->map, map_data), close(fd), map_data);
-}
-
-void print_map_data(t_map *map_data)
-{
-	printf("NO: %s\n", map_data->NO);
-	printf("SO: %s\n", map_data->SO);
-	printf("WE: %s\n", map_data->WE);
-	printf("EA: %s\n", map_data->EA);
-	
-	printf("F: %d,%d,%d\n", map_data->F[0], map_data->F[1], map_data->F[2]);
-	printf("C: %d,%d,%d\n", map_data->C[0], map_data->C[1], map_data->C[2]);
-	for (int i = 0; map_data->map[i]; i++)
-		printf("%s\n", map_data->map[i]);
 }

@@ -66,7 +66,8 @@ char	**ft_split(int *height, char *original, char c)
 	if (!original)
 		return (NULL);
 	i = 0;
-	d_arr = heap_control(1, (word_count(original, c) + 1) * sizeof(char *), 0, 0);
+	d_arr = heap_control(1, (word_count(original, c) + 1)
+			* sizeof(char *), 0, 0);
 	if (d_arr == NULL)
 		return (d_arr);
 	if (height)
