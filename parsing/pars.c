@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:33:56 by miguiji           #+#    #+#             */
-/*   Updated: 2024/07/21 05:32:09 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/21 07:57:12 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ bool	check_borders(char **map, int i, int j)
 
 bool	check_map(char **map, t_map *data, int i, int j)
 {
-	while (map[++i])
+	while (map && map[++i])
 	{
 		j = -1;
 		while (map[i][++j])
