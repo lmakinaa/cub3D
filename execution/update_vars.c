@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_vars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 01:23:44 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/20 21:54:11 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/21 01:45:07 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ix_wall(t_cub *cub, double start_y, double start_x)
 	int	y;
 	int	x;
  
- if (start_y < 0 || start_x < 0 || start_x > S_W || start_y > S_H)
+ if (start_y < 0 || start_x < 0)
 		return (1);
 	x = (start_x) / TILE_SIZE;
 	y = (start_y) / TILE_SIZE;
