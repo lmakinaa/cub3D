@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-static int	check(char str, char const *set)
+static int	chex(char str, char const *set)
 {
 	while (*set)
 	{
@@ -31,13 +31,13 @@ char	*ft_strtrim(char *str, char *set)
 	i = 0;
 	if (!str || !*str)
 		return (str);
-	while (check(str[i], set))
+	while (chex(str[i], set))
 		i++;
 	if (str[i])
 		start = i;
 	while (str[i])
 		i++;
-	while (i > 0 && check(str[i - 1], set))
+	while (i > 0 && chex(str[i - 1], set))
 		i--;
 	return (ft_substr(str, start, i - start));
 }
