@@ -6,7 +6,7 @@
 /*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:33:56 by miguiji           #+#    #+#             */
-/*   Updated: 2024/07/20 21:11:07 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/21 02:56:16 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool range_checker(int *nbrs, int size)
 	int i;
 
 	i = 0;
-	while(i < size)
+	while(i <= size)
 	{
 		if(nbrs[i] > 255 || nbrs[i] < 0)
 			exit_on_error("Error : color range invalid !\n", 30);
@@ -37,7 +37,18 @@ bool range_checker(int *nbrs, int size)
 	}
 	return (true);
 }
-
+int check(char *line)
+{
+	int i = 0;
+	while(line[i])
+	{
+		if ((line[i] >= 9 && line[i] <= 13)  || line[i] == 32)
+			i++;
+		else
+			return (1);
+	}
+	return (0);
+}
 void get_colors(int **color, char *line)
 {
 	int i = 1;
@@ -53,11 +64,8 @@ void get_colors(int **color, char *line)
 			i++;
 		if(line[i] == ',' && ft_isdigit(line[i - 1]))
 			flag++;
-		else if (line[i]!= 32 && line[i] != '\n')
-		{
-			printf("%c\n", line[i]);
+		else if (flag != 2 || check(&line[i]))
 			return ;
-		}
 		if (line[i])
 			i++;
 	}
@@ -170,12 +178,13 @@ t_map	*is_valid_map(char **argv, char *line)
 				exit_on_error("Error: invalid map parameters\n", 30);
 			continue ;
 		}
-		if (strlen(line) - 1 > map_data->width)
-			map_data->width = strlen(line) - 1;
+		if (ft_strlen(line) - 1 > map_data->width)
+			map_data->width = ft_strlen(line) - 1;
 		(1) && (tmp = one_line_map, one_line_map = ft_strjoin(tmp, line),
 			heap_control(M_DEL, 0, tmp, 0), 1);
 	}
 	map_data->map = ft_split(&map_data->height, one_line_map, '\n');
+	map_data->player = 0;
 	return (check_map(map_data->map, map_data), close(fd), map_data);
 }
 
