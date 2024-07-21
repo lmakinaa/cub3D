@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/20 21:35:33 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/21 01:45:19 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define FOV 65
 # define TILE_SIZE 32.
 # define ROTATION_SPEED 2 * M_PI / 180
-# define PLAYER_SPEED 2
+# define PLAYER_SPEED 6
 # define N_RAYS S_W / 1
 
 # define MINIMAP_SCALE 0.2

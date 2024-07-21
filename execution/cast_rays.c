@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_rays.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:17:40 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/20 03:20:10 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/21 01:46:19 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	is_wall(t_cub *cub, double start_y, double start_x)
 	int	y;
 	int	x;
  
- if (start_y < 0 || start_x < 0 || start_x > S_W || start_y > S_H)
+ if (start_y < 0 || start_x < 0)
 		return (1);
 	x = (start_x) / TILE_SIZE;
 	y = (start_y) / TILE_SIZE;
@@ -98,7 +98,7 @@ double	h_intersec_distance(t_cub *cub, double ray_angle)
 	step_y = TILE_SIZE;
 	step_x = TILE_SIZE / tan(ray_angle);
 	adjust_intersec(cub->ray, 1, &step_x, &step_y, 1);
-	while (start_x >= 0 && start_x <= S_W && start_y >= 0 && start_y <= S_H)
+	while (start_x >= 0 && start_y >= 0)
 	{
 		if ((!cub->ray->facing_u_d && is_wall(cub, start_y - 1, start_x))
 			|| is_wall(cub, start_y, start_x))
@@ -139,7 +139,7 @@ double	v_interse_distance(t_cub *cub, double ray_angle)
 	step_x = TILE_SIZE;
 	step_y = TILE_SIZE * tan(ray_angle);
 	adjust_intersec(cub->ray, 1, &step_x, &step_y, 0);
-	while (start_x >= 0 && start_x <= S_W && start_y >= 0 && start_y <= S_H)
+	while (start_x >= 0 && start_y >= 0)
 	{
 		if ((!cub->ray->facing_l_r && is_wall(cub, start_y, start_x - 1))
 			|| is_wall(cub, start_y, start_x))
