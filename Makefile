@@ -15,7 +15,8 @@ EXECUTION = execution/main.c\
 			execution/rendering.c
 
 PARSING = parsing/pars.c\
-		  parsing/get_next_line.c
+		  parsing/get_next_line.c\
+		  parsing/pars_utils.c
 
 ft_functions = ft_functions/ft_atoi.c  ft_functions/ft_isalpha.c ft_functions/ft_strncmp.c ft_functions/ft_substr.c \
 			   ft_functions/ft_split.c ft_functions/ft_strjoin.c ft_functions/ft_isalnum.c ft_functions/ft_strdup.c \

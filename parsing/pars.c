@@ -3,112 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:33:56 by miguiji           #+#    #+#             */
-/*   Updated: 2024/07/21 03:45:51 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 04:43:37 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void	get_path(char **path, char *line)
-{
-	int		i;
-	char	*trimed;
-
-	i = 2;
-	trimed = ft_strtrim(line + i, " \t\n\v\f\r");
-	if (!trimed || ft_strlen(trimed) > 1024)
-		*path = NULL;
-	else
-		*path = trimed;
-}
-
-bool	range_checker(int *nbrs, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i <= size)
-	{
-		if (nbrs[i] > 255 || nbrs[i] < 0)
-			exit_on_error("Error : color range invalid !\n", 30);
-		i++;
-	}
-	return (true);
-}
-
-int	check(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i])
-	{
-		if ((line[i] >= 9 && line[i] <= 13) || line[i] == 32)
-			i++;
-		else
-			return (1);
-	}
-	return (0);
-}
-
-void	get_colors(int **color, char *line)
-{
-	int		i;
-	int		start;
-	int		flag;
-	char	**array;
-	int		*nbr;
-
-	i = 1;
-	flag = 0;
-	while (line[i] && ((line[i] >= 9 && line[i] <= 13) || line[i] == 32))
-		i++;
-	start = i;
-	while (line[i])
-	{
-		while (ft_isdigit(line[i]))
-			i++;
-		if (line[i] == ',' && ft_isdigit(line[i - 1]))
-			flag++;
-		else if (flag != 2 || check(&line[i]))
-			return ;
-		if (line[i])
-			i++;
-	}
-	if (++flag == 3)
-	{
-		array = ft_split(NULL, line + start, ',');
-		nbr = heap_control(M_ALLOC, sizeof(int) * 3, 0, 1);
-		while (flag--)
-		{
-			nbr[2 - flag] = atoi(array[2 - flag]);
-		}
-		if (range_checker(nbr, sizeof(nbr) / 4))
-			(*color) = nbr;
-	}
-}
-
-bool	get_params(char *line, t_map *map_data)
-{
-	if (!ft_strncmp(line, "NO ", 3) && !map_data->no)
-		return (get_path(&map_data->no, line), true);
-	else if (!ft_strncmp(line, "SO ", 3) && !map_data->so)
-		return (get_path(&map_data->so, line), true);
-	else if (!ft_strncmp(line, "WE ", 3) && !map_data->we)
-		return (get_path(&map_data->we, line), true);
-	else if (!ft_strncmp(line, "EA ", 3) && !map_data->ea)
-		return (get_path(&map_data->ea, line), true);
-	else if (!ft_strncmp(line, "F ", 2) && !map_data->floor)
-		return (get_colors(&(map_data->floor), line), true);
-	else if (!ft_strncmp(line, "C ", 2) && !map_data->ceil)
-		return (get_colors(&(map_data->ceil), line), true);
-	else if (*line == '\n')
-		return (true);
-	return (false);
-}
 
 bool	check_params(t_map *map_data)
 {
@@ -131,12 +33,8 @@ bool	check_borders(char **map, int i, int j)
 	return (true);
 }
 
-bool	check_map(char **map, t_map *data)
+bool	check_map(char **map, t_map *data, int i, int j)
 {
-	int	i;
-	int	j;
-
-	i = -1;
 	while (map[++i])
 	{
 		j = -1;
@@ -163,39 +61,40 @@ bool	check_map(char **map, t_map *data)
 	return (true);
 }
 
-t_map	*is_valid_map(char **argv, char *line)
+static int	for_norminette(t_map *map_data, char *line, int fd)
+{
+	if (!check_params(map_data))
+	{
+		if (!get_params(line, map_data) && !close(fd))
+			exit_on_error("Error: invalid map parameters\n", 30);
+		return (1);
+	}
+	return (0);
+}
+
+t_map	*is_valid_map(char **argv, char *line, char	*one_line_map)
 {
 	t_map	*map_data;
 	int		fd;
 	char	*tmp;
-	char	*one_line_map;
 
-	one_line_map = NULL;
 	if (ft_strnstr(argv[1] + (ft_strlen(argv[1]) - 4), ".cub", 4) == NULL)
 		exit_on_error("Error: invalid file extension\n", 30);
-	map_data = heap_control(1, sizeof(t_map), NULL, 1);
-	map_data->width = 0;
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-		exit_on_error("Error: open(2) failed\n", 22);
+	(1) && (map_data = heap_control(1, sizeof(t_map), NULL, 1),
+			map_data->width = 0, fd = open(argv[1], O_RDONLY));
+	(fd < 0) && (exit_on_error("Error: open(2) failed\n", 22), vr());
 	while (1)
 	{
-		heap_control(M_DEL, 0, line, 0);
-		line = get_next_line(fd);
+		(1) && (heap_control(M_DEL, 0, line, 0), line = get_next_line(fd));
 		if (!line)
 			break ;
-		if (!check_params(map_data))
-		{
-			if (!get_params(line, map_data))
-				exit_on_error("Error: invalid map parameters\n", 30);
+		if (for_norminette(map_data, line, fd))
 			continue ;
-		}
 		if (ft_strlen(line) - 1 > map_data->width)
 			map_data->width = ft_strlen(line) - 1;
 		(1) && (tmp = one_line_map, one_line_map = ft_strjoin(tmp, line),
 			heap_control(M_DEL, 0, tmp, 0), vr());
 	}
 	map_data->map = ft_split(&map_data->height, one_line_map, '\n');
-	map_data->player = 0;
-	return (check_map(map_data->map, map_data), close(fd), map_data);
+	return (check_map(map_data->map, map_data, -1, -1), close(fd), map_data);
 }

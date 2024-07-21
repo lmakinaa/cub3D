@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 03:31:35 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 04:19:46 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 04:44:09 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define FOV 65
 # define TILE_SIZE 32
 # define R_S 2
-# define PLAYER_SPEED 6
+# define PLAYER_SPEED 2
 # define N_RAYS 1000
 # define MINI_TILE_SIZE 6.4
 
@@ -111,6 +111,7 @@ typedef struct s_map
 }	t_map;
 
 void		cast_rays(t_cub *cub, double h_d, double v_d, int col);
+void		get_colors(int **color, char *line, int i, int flag);
 void		draw_minimap(t_cub *cub);
 t_data		*init_data(t_map *map_data);
 void		init_the_player(t_cub *cub);
@@ -149,7 +150,12 @@ void		*ft_memset(void *str, int c, size_t len);
 char		*ft_strchr(const char *str, int c);
 int			vr(void);
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
-t_map		*is_valid_map(char **argv, char *line);
+t_map		*is_valid_map(char **argv, char *line, char	*one_line_map);
+int			check(char *line);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
+void		get_path(char **path, char *line);
+bool		range_checker(int *nbrs, int size);
+void		get_colors(int **color, char *line, int i, int flag);
+bool		get_params(char *line, t_map *map_data);
 
 #endif
