@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:33:56 by miguiji           #+#    #+#             */
-/*   Updated: 2024/07/21 03:25:40 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 03:28:00 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool range_checker(int *nbrs, int size)
 	int i;
 
 	i = 0;
-	while(i < size)
+	while(i <= size)
 	{
 		if(nbrs[i] > 255 || nbrs[i] < 0)
 			exit_on_error("Error : color range invalid !\n", 30);
@@ -37,7 +37,18 @@ bool range_checker(int *nbrs, int size)
 	}
 	return (true);
 }
-
+int check(char *line)
+{
+	int i = 0;
+	while(line[i])
+	{
+		if ((line[i] >= 9 && line[i] <= 13)  || line[i] == 32)
+			i++;
+		else
+			return (1);
+	}
+	return (0);
+}
 void get_colors(int **color, char *line)
 {
 	int i = 1;
@@ -53,11 +64,8 @@ void get_colors(int **color, char *line)
 			i++;
 		if(line[i] == ',' && ft_isdigit(line[i - 1]))
 			flag++;
-		else if (line[i]!= 32 && line[i] != '\n')
-		{
-			printf("%c\n", line[i]);
+		else if (flag != 2 || check(&line[i]))
 			return ;
-		}
 		if (line[i])
 			i++;
 	}
@@ -176,5 +184,6 @@ t_map	*is_valid_map(char **argv, char *line)
 			heap_control(M_DEL, 0, tmp, 0), vr());
 	}
 	map_data->map = ft_split(&map_data->height, one_line_map, '\n');
+	map_data->player = 0;
 	return (check_map(map_data->map, map_data), close(fd), map_data);
 }
