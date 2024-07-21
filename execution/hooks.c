@@ -6,11 +6,18 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 23:11:48 by ijaija            #+#    #+#             */
-/*   Updated: 2024/05/27 17:57:28 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 02:12:43 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void clean_exit(t_cub *cub)
+{
+	mlx_terminate(cub->mlx_p);
+	heap_control(M_CLEAN, 0, 0, 0);
+	exit(EXIT_SUCCESS);
+}
 
 void	arrows_act(t_cub *cub, int d, int p)
 {
@@ -61,6 +68,9 @@ void	key_hooks(mlx_key_data_t k, void *m)
 	t_cub	*cub;
 
 	cub = m;
+	if (k.key == MLX_KEY_ESCAPE)
+	{
+		clean_exit(cub);
+	}
 	arrows_handle(&k, cub, arrows_act);
-	
 }

@@ -1,10 +1,10 @@
 
-NO .fdgdfdsgdsgs
-SO ./textures/banner.xpm
-WE ./textures/redbrick. xpm
-EA  bluestone.xpm
+NO ./textures/eagle.png
+SO ./textures/stone.png
+WE ./textures/wall_1.png
+EA ./textures/wood.png
 
-C 4 55,100,200
+C 55,100,200
 F 0,125,5      
 
 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111

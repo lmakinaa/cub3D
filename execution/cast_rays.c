@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:17:40 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 01:46:19 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 02:19:18 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,14 +167,14 @@ void cast_rays(t_cub *cub, int x, int y)
 		double	v_d = v_interse_distance(cub, map_angle(cub->ray->ray_angle));
 		if (v_d <= h_d)
 		{
-			//printf("v->%f\n", v_d);
+			cub->ray->f = 0;
 			cub->ray->distance_to_wall = v_d;
 			cub->ray->tex_offset = (cub->ray->v_y / TILE_SIZE)
 			- ((int)(cub->ray->v_y / TILE_SIZE));
 		}
 		else
 		{
-			//printf("d->%f\n", h_d);
+			cub->ray->f = 1;
 			cub->ray->distance_to_wall = h_d;
 			cub->ray->tex_offset = (cub->ray->h_x / TILE_SIZE)
 			- ((int)(cub->ray->h_x / TILE_SIZE));
