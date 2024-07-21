@@ -6,13 +6,13 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 23:11:48 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 02:25:58 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 02:41:40 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void clean_exit(t_cub *cub)
+void	clean_exit(t_cub *cub)
 {
 	clean_textures(cub);
 	mlx_terminate(cub->mlx_p);
@@ -39,7 +39,7 @@ void	arrows_act(t_cub *cub, int d, int p)
 		cub->p->u_d = p;
 }
 
-void	arrows_handle(mlx_key_data_t *k, t_cub *cub, void (*f)(t_cub *cub, int d, int p))
+void	arrows_handle(mlx_key_data_t *k, t_cub *cub)
 {
 	int	press;
 	int	direction;
@@ -47,7 +47,6 @@ void	arrows_handle(mlx_key_data_t *k, t_cub *cub, void (*f)(t_cub *cub, int d, i
 	press = 1;
 	if (k->action == MLX_RELEASE)
 		press = 0;
-
 	direction = 0;
 	if (k->key == MLX_KEY_RIGHT)
 		direction = 'R';
@@ -61,7 +60,7 @@ void	arrows_handle(mlx_key_data_t *k, t_cub *cub, void (*f)(t_cub *cub, int d, i
 		direction = 'A';
 	else if (k->key == MLX_KEY_D)
 		direction = 'D';
-	f(cub, direction, press);
+	arrows_act(cub, direction, press);
 }
 
 void	key_hooks(mlx_key_data_t k, void *m)
@@ -73,5 +72,5 @@ void	key_hooks(mlx_key_data_t k, void *m)
 	{
 		clean_exit(cub);
 	}
-	arrows_handle(&k, cub, arrows_act);
+	arrows_handle(&k, cub);
 }
