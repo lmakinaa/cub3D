@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:26:59 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 01:45:19 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/21 02:18:49 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_ray
 	double	v_y;
 	double	h_x;
 	double	h_y;
+	int		f;
 	float	tex_offset;
 }		t_ray;
 
@@ -78,7 +79,8 @@ typedef struct s_data
 	int				p_y;
 	int				w_map;
 	int				h_map;
-	mlx_image_t 	*texture;
+	mlx_image_t 	*textures[4];
+	char 			**texture_paths;
 	struct s_cub	*cub;
 }		t_data;
 
@@ -124,6 +126,7 @@ uint32_t		get_texture_pixel(mlx_image_t *texture, int x, int y);
 void			render_obstacles(t_cub *cub, int col);
 void			put_sky_n_floor(t_cub *cub);
 int				is_wall(t_cub *cub, double start_y, double start_x);
+void			clean_exit(t_cub *cub);
 
 //------------------------------------------------------
 
