@@ -44,7 +44,7 @@ int	ix_wall(t_cub *cub, double start_y, double start_x)
 
 void	p_movement(t_cub *mlx, double move_x, double move_y)
 {
-	int	new_x; // try changing these to double
+	int	new_x;
 	int	new_y;
 
 	new_y = roundf(mlx->p->y_pixel + (move_y * 5));
