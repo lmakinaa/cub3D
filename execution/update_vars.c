@@ -44,15 +44,15 @@ int	ix_wall(t_cub *cub, double start_y, double start_x)
 
 void	p_movement(t_cub *mlx, double move_x, double move_y)
 {
-	int	new_x;
+	int	new_x; // try changing these to double
 	int	new_y;
 
-	new_y = mlx->p->y_pixel + (move_y * 5);
-	new_x = mlx->p->x_pixel + (move_x * 5);
+	new_y = roundf(mlx->p->y_pixel + (move_y * 5));
+	new_x = roundf(mlx->p->x_pixel + (move_x * 5));
 	if (!ix_wall(mlx, new_y, new_x))
 	{
-		mlx->p->x_pixel += move_x;
-		mlx->p->y_pixel += move_y;
+		mlx->p->x_pixel = roundf(mlx->p->x_pixel + move_x);
+		mlx->p->y_pixel = roundf(mlx->p->y_pixel + move_y);
 	}
 }
 
