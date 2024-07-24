@@ -31,10 +31,10 @@ void	load_textures(t_data *d)
 	{
 		tmp = mlx_load_png(d->texture_paths[i]);
 		if (!tmp)
-			clean_exit(d->cub);
+			clean_exit(1, d->cub, "mlx_load_png() failed\n");
 		d->textures[i] = mlx_texture_to_image(d->cub->mlx_p, tmp);
 		if (!d->textures[i])
-			clean_exit(d->cub);
+			clean_exit(1, d->cub, "mlx_texture_to_image() failed\n");
 		mlx_delete_texture(tmp);
 	}
 }
@@ -64,12 +64,12 @@ void	start_the_game(t_data *data)
 		exit_on_error("mlx_init() failed\n", 18);
 	cub->img = mlx_new_image(cub->mlx_p, S_W, S_H);
 	if (!cub->img || (mlx_image_to_window(cub->mlx_p, cub->img, 0, 0) < 0))
-		exit_on_error("mlx_new_image() failed\n", 23);
+		clean_exit(1, cub, "mlx_new_image() failed\n");
 	cub->minimap_img = mlx_new_image(cub->mlx_p, cub->data->w_map
 			* MINI_TILE_SIZE, cub->data->h_map * MINI_TILE_SIZE);
 	if (!cub->minimap_img || (mlx_image_to_window(cub->mlx_p,
 				cub->minimap_img, 5, 5) < 0))
-		exit_on_error("mlx_new_image() failed\n", 23);
+		clean_exit(1, cub, "mlx_new_image() failed\n");
 	load_textures(data);
 	init_the_player(cub);
 	mlx_key_hook(cub->mlx_p, key_hooks, cub);

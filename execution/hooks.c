@@ -12,12 +12,14 @@
 
 #include "cub3d.h"
 
-void	clean_exit(t_cub *cub)
+void	clean_exit(int exit_status, t_cub *cub, char* error)
 {
+	if (exit_status)
+		write(2, error, ft_strlen(error));
 	clean_textures(cub);
 	mlx_terminate(cub->mlx_p);
 	heap_control(M_CLEAN, 0, 0, 0);
-	exit(EXIT_SUCCESS);
+	exit(exit_status);
 }
 
 void	arrows_act(t_cub *cub, int d, int p)
@@ -70,7 +72,7 @@ void	key_hooks(mlx_key_data_t k, void *m)
 	cub = m;
 	if (k.key == MLX_KEY_ESCAPE)
 	{
-		clean_exit(cub);
+		clean_exit(0, cub, NULL);
 	}
 	arrows_handle(&k, cub);
 }

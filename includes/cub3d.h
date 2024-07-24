@@ -126,7 +126,7 @@ uint32_t	get_texture_pixel(mlx_image_t *texture, int x, int y);
 void		render_obstacles(t_cub *cub, int col);
 void		put_sky_n_floor(t_cub *cub);
 int			is_wall(t_cub *cub, double start_y, double start_x);
-void		clean_exit(t_cub *cub);
+void		clean_exit(int exit_status, t_cub *cub, char* error);
 void		clean_textures(t_cub *cub);
 void		get_angle_facing(t_ray *ray);
 void		adjust_p_angle(t_cub *cub);
