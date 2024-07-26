@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 23:11:48 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 04:18:58 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/26 15:34:57 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	clean_exit(int exit_status, t_cub *cub, char* error)
+void	clean_exit(int exit_status, t_cub *cub, char *error)
 {
 	if (exit_status)
 		write(2, error, ft_strlen(error));
