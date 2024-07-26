@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 03:31:35 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 05:36:07 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/07/26 15:35:25 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ uint32_t	get_texture_pixel(mlx_image_t *texture, int x, int y);
 void		render_obstacles(t_cub *cub, int col);
 void		put_sky_n_floor(t_cub *cub);
 int			is_wall(t_cub *cub, double start_y, double start_x);
-void		clean_exit(int exit_status, t_cub *cub, char* error);
+void		clean_exit(int exit_status, t_cub *cub, char *error);
 void		clean_textures(t_cub *cub);
 void		get_angle_facing(t_ray *ray);
 void		adjust_p_angle(t_cub *cub);
