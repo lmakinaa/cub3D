@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 04:29:03 by miguiji           #+#    #+#             */
-/*   Updated: 2024/07/21 04:43:40 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/07/29 17:25:59 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	get_path(char **path, char *line)
 	char	*trimed;
 
 	i = 2;
-	trimed = ft_strtrim(line + i, " \t\n\v\f\r");
+	trimed = ft_strtrim(line + i, " \t\n\v\f\r"); // from here
 	if (!trimed || ft_strlen(trimed) > 1024)
 		*path = NULL;
 	else

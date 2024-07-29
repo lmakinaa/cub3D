@@ -22,6 +22,7 @@ char	*ft_substr(const char *str, int start, int len)
 		return (NULL);
 	if (start >= ft_strlen(str))
 		return (NULL);
+	// here is the problem
 	if (ft_strlen(str + start) < len)
 		len = ft_strlen(str + start);
 	ptr = heap_control(1, len + 1, 0, 0);
