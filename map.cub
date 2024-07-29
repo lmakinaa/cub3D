@@ -1,5 +1,4 @@
-NO 
-NO ./textures/wall_1.png
+NO ./textures/wall_1.png          
 SO ./textures/wall_1.png
 WE ./textures/wall_1.png
 EA ./textures/wall_1.png
