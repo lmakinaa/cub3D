@@ -29,8 +29,9 @@ char	*ft_strtrim(char *str, char *set)
 	int	start;
 
 	i = 0;
+	start = 0;
 	if (!str || !*str)
-		return (str);
+		return (NULL);
 	while (chex(str[i], set))
 		i++;
 	if (str[i])
@@ -39,5 +40,5 @@ char	*ft_strtrim(char *str, char *set)
 		i++;
 	while (i > 0 && chex(str[i - 1], set))
 		i--;
-	return (ft_substr(str, start, i - start)); // from here
+	return (ft_substr(str, start, i - start));
 }
