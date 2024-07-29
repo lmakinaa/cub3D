@@ -39,5 +39,5 @@ char	*ft_strtrim(char *str, char *set)
 		i++;
 	while (i > 0 && chex(str[i - 1], set))
 		i--;
-	return (ft_substr(str, start, i - start));
+	return (ft_substr(str, start, i - start)); // from here
 }
