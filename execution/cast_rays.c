@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_rays.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:17:40 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 05:17:25 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/08/06 14:43:46 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,20 +137,22 @@ double	v_interse_distance(t_cub *cub, double ray_angle)
 void	cast_rays(t_cub *cub, double h_d, double v_d, int col)
 {
 	cub->ray->ray_angle = cub->p->angle - (cub->p->fov_rd / 2);
-	(1) && (get_angle_facing(cub->ray), col = -1);
+	get_angle_facing(cub->ray);
 	while (++col < N_RAYS)
 	{
 		h_d = h_intersec_distance(cub, map_angle(cub->ray->ray_angle));
 		v_d = v_interse_distance(cub, map_angle(cub->ray->ray_angle));
 		if (v_d <= h_d)
 		{
-			(1) && (cub->ray->f = 0, cub->ray->distance_to_wall = v_d);
+			cub->ray->f = 0;
+			cub->ray->distance_to_wall = v_d;
 			cub->ray->tex_offset = (cub->ray->v_y / TILE_SIZE)
 				- ((int)(cub->ray->v_y / TILE_SIZE));
 		}
 		else
 		{
-			(1) && (cub->ray->f = 1, cub->ray->distance_to_wall = h_d);
+			cub->ray->f = 1;
+			cub->ray->distance_to_wall = h_d;
 			cub->ray->tex_offset = (cub->ray->h_x / TILE_SIZE)
 				- ((int)(cub->ray->h_x / TILE_SIZE));
 		}

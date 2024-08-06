@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:09:29 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 05:36:28 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/08/06 14:35:34 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,8 @@ void	start_the_game(t_data *data)
 	cub->img = mlx_new_image(cub->mlx_p, S_W, S_H);
 	if (!cub->img || (mlx_image_to_window(cub->mlx_p, cub->img, 0, 0) < 0))
 		clean_exit(1, cub, "mlx_new_image() failed\n");
-	cub->minimap_img = mlx_new_image(cub->mlx_p, cub->data->w_map
-			* MINI_TILE_SIZE, cub->data->h_map * MINI_TILE_SIZE);
-	if (!cub->minimap_img || (mlx_image_to_window(cub->mlx_p,
-				cub->minimap_img, 5, 5) < 0))
+	cub->minimap_img = mlx_new_image(cub->mlx_p, cub->data->w_map * MINI_TILE_SIZE, cub->data->h_map * MINI_TILE_SIZE);
+	if (!cub->minimap_img || (mlx_image_to_window(cub->mlx_p, cub->minimap_img, 5, 5) < 0))
 		clean_exit(1, cub, "mlx_new_image() failed\n");
 	load_textures(data);
 	init_the_player(cub);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 04:29:03 by miguiji           #+#    #+#             */
-/*   Updated: 2024/07/29 21:59:04 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/08/06 14:42:29 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void	get_colors(int **color, char *line, int i, int flag)
 			flag++;
 		else if (flag != 2 || check(&line[i]))
 			return ;
-		(1) && (line[i]) && (i++);
+		if(line[i])
+			(i++);
 	}
 	if (++flag == 3)
 	{
@@ -79,7 +80,8 @@ void	get_colors(int **color, char *line, int i, int flag)
 		nbr = heap_control(M_ALLOC, sizeof(int) * 3, 0, 1);
 		while (flag--)
 			nbr[2 - flag] = atoi(array[2 - flag]);
-		(1) && (range_checker(nbr, sizeof(nbr) / 4)) && (*color = nbr);
+		if (range_checker(nbr, sizeof(nbr) / 4))
+			(*color = nbr);
 	}
 }
 

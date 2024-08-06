@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:01:07 by miguiji           #+#    #+#             */
-/*   Updated: 2024/07/21 03:36:47 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/08/06 14:45:03 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ static char	*return_line(char **buffer, size_t len)
 		if (!new_buffer)
 			return (heap_control(M_DEL, 0, str, 0), heap_control(M_DEL, 0,
 					*buffer, 0), *buffer = NULL, NULL);
-		(1) && (heap_control(M_DEL, 0, *buffer, 0), *buffer = new_buffer);
+		heap_control(M_DEL, 0, *buffer, 0);
+		*buffer = new_buffer;
 	}
 	else
 	{

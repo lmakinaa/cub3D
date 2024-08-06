@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:05:18 by ijaija            #+#    #+#             */
-/*   Updated: 2024/07/21 05:13:22 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/08/06 14:35:01 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,5 @@ void	draw_minimap(t_cub *cub)
 			draw_tile(cub, x * MINI_TILE_SIZE, y * MINI_TILE_SIZE, color);
 		}
 	}
-	draw_mini_player(cub, 0.2 * cub->p->x_pixel,
-		0.2 * cub->p->y_pixel, 0xFF0F00FF);
+	draw_mini_player(cub, 0.2 * cub->p->x_pixel, 0.2 * cub->p->y_pixel, 0xFF0F00FF);
 }
