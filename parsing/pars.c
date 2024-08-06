@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 20:33:56 by miguiji           #+#    #+#             */
-/*   Updated: 2024/07/21 07:57:12 by ijaija           ###   ########.fr       */
+/*   Updated: 2024/08/06 14:44:05 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,16 @@ bool	check_map(char **map, t_map *data, int i, int j)
 	return (true);
 }
 
-static int	for_norminette(t_map *map_data, char *line, int fd)
-{
-	if (!check_params(map_data))
-	{
-		if (!get_params(line, map_data) && !close(fd))
-			exit_on_error("Error: invalid map parameters\n", 30);
-		return (1);
-	}
-	return (0);
-}
+// static int	for_norminette(t_map *map_data, char *line, int fd)
+// {
+// 	if (!check_params(map_data))
+// 	{
+// 		if (!get_params(line, map_data) && !close(fd))
+// 			exit_on_error("Error: invalid map parameters\n", 30);
+// 		return (1);
+// 	}
+// 	return (0);
+// }
 
 t_map	*is_valid_map(char **argv, char *line, char	*one_line_map, int flag)
 {
@@ -80,22 +80,31 @@ t_map	*is_valid_map(char **argv, char *line, char	*one_line_map, int flag)
 
 	if (ft_strnstr(argv[1] + (ft_strlen(argv[1]) - 4), ".cub", 4) == NULL)
 		exit_on_error("Error: invalid file extension\n", 30);
-	(1) && (map_data = heap_control(1, sizeof(t_map), NULL, 1),
-			map_data->width = 0, fd = open(argv[1], O_RDONLY));
-	(fd < 0) && (exit_on_error("Error: open(2) failed\n", 22), vr());
+	map_data = heap_control(1, sizeof(t_map), NULL, 1);
+	map_data->width = 0;
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+		exit_on_error("Error: open(2) failed\n", 22);
 	while (1)
 	{
-		(1) && (heap_control(M_DEL, 0, line, 0), line = get_next_line(fd));
+		heap_control(M_DEL, 0, line, 0);
+		line = get_next_line(fd);
 		if (!line)
 			break ;
-		if (for_norminette(map_data, line, fd))
+		if (!check_params(map_data))
+		{
+			if (!get_params(line, map_data) && !close(fd))
+				exit_on_error("Error: invalid map parameters\n", 30);
 			continue ;
+		}
 		if (ft_strlen(line) - 1 > map_data->width)
 			map_data->width = ft_strlen(line) - 1;
-		(1) && check(line) && (flag = 1);
+		if (check(line)) 
+			flag = 1;
 		if (line[0] == '\n' && flag && !close(fd))
 			exit_on_error("Error: invalid map parameters new line \n", 40);
-		(1) && (tmp = one_line_map, one_line_map = ft_strjoin(tmp, line));
+		tmp = one_line_map;
+		one_line_map = ft_strjoin(tmp, line);
 	}
 	map_data->map = ft_split(&map_data->height, one_line_map, '\n');
 	return (check_map(map_data->map, map_data, -1, -1), close(fd), map_data);
